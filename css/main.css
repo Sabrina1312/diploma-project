@@ -1,0 +1,47 @@
+@import url("reset.css");
+@import url("fonts.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+  color: #000;
+}
+
+h1 {
+  font-family: "Hauora", sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+}
+
+h2 {
+  font-family: "Hauora", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+p {
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.special-text {
+  font-family: "WADIK", sans-serif;
+  font-size: 24px;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 clamp(16px, 3vw, 40px);
+  margin: 0 auto;
+}

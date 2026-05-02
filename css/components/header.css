@@ -1,0 +1,147 @@
+.header {
+  width: 100%;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 33px 0 17px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .header-wrapper {
+    padding: 30px 0 54px 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .header-wrapper {
+    padding: 40px 0 85px 0;
+  }
+}
+
+.header-logo {
+  width: 210px;
+  height: 50px;
+  background: #d9d9d9;
+}
+
+@media screen and (max-width: 768px) {
+  .header-logo {
+    width: 108px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .header-logo {
+    width: 79px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    display: none;
+  }
+}
+.head-nav {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.head-nav li {
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+}
+
+.head-nav li:last-child {
+  padding: 10px 30px;
+  border-radius: 25px;
+  color: #fff;
+  background-color: #0000fe;
+}
+
+.header-burger {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .header-burger {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    right: 0;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-burger:before {
+    content: "";
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-burger.active:before {
+    transform: rotate(45deg);
+    top: 9px;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-burger:after {
+    content: "";
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-burger.active:after {
+    transform: rotate(-45deg);
+    bottom: 9px;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-burger span {
+    content: "";
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+    left: 0;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-burger.active span {
+    transform: scale(0);
+  }
+}
