@@ -15,6 +15,15 @@
   }
 }
 
+.special-text,
+.main-text,
+.special-text-down,
+.main-text-down {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
 .special-text {
   width: fit-content;
   font-family: "WADIK", sans-serif;
