@@ -15,6 +15,12 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .hero__wrapper {
+    padding: 90px 0 70px 0;
+  }
+}
+
 .special-text,
 .main-text,
 .special-text-down,
@@ -77,11 +83,12 @@
   width: fit-content;
   font-family: "WADIK", sans-serif;
   font-weight: 600;
-  font-size: clamp(60px, 13vw, 192px);
+  font-size: clamp(60px, 13.2vw, 192px);
   line-height: 100%;
   text-transform: uppercase;
   color: #0000ca;
   cursor: pointer;
+  padding: 0 0 10px 0;
 }
 
 @media screen and (max-width: 900px) {
@@ -96,23 +103,23 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .main-text-down {
+    padding: 0;
+    font-size: 47px;
+  }
+}
+
 .hero__item {
   max-width: min-content;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 17px;
   background: #fff;
   padding: 20px 20px 10px 0;
   position: absolute;
   top: 49%;
   left: 0;
-}
-
-@media screen and (max-width: 1200px) {
-  .hero__item {
-    gap: 0;
-  }
 }
 
 @media screen and (max-width: 900px) {
@@ -123,9 +130,15 @@
 
 @media screen and (max-width: 768px) {
   .hero__item {
-    margin-top: 10px;
-    gap: 10px;
-    padding-right: 0;
+    max-width: 100%;
+    padding: 20px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__item {
+    max-width: 100%;
+    padding: 25px 0 0 0;
   }
 }
 
@@ -133,7 +146,7 @@
   font-family: "WADIK", sans-serif;
   font-weight: 600;
   font-size: 50px;
-  line-height: 1;
+  line-height: 1.2;
   color: #000;
   white-space: nowrap;
 }
@@ -152,7 +165,13 @@
 
 @media screen and (max-width: 768px) {
   .hero__item h3 {
-    font-size: clamp(25px, 7.03vw, 54px);
+    font-size: clamp(28px, 7.03vw, 54px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__item h3 {
+    white-space: wrap;
   }
 }
 
@@ -160,7 +179,7 @@
   font-family: "WADIK", sans-serif;
   font-weight: 600;
   font-size: 60px;
-  line-height: 1;
+  line-height: 1.2;
   color: #0000fe;
   white-space: nowrap;
 }
@@ -179,7 +198,13 @@
 
 @media screen and (max-width: 768px) {
   .hero__item h4 {
-    font-size: clamp(32px, 8.6vw, 66px);
+    font-size: clamp(31px, 8.6vw, 66px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__item h4 {
+    font-size: 31px;
   }
 }
 
@@ -189,6 +214,20 @@
   font-size: 16px;
   line-height: 1.5;
   color: #000;
+  margin: 20px 0 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__item p {
+    margin: 10px 0 20px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__item p {
+    line-height: 1.3;
+    margin: 10px 0 35px 0;
+  }
 }
 
 .hero__item p a {
@@ -216,4 +255,77 @@
     width: 100%;
     text-align: center;
   }
+}
+
+/*===SCROLL===*/
+.scroll {
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  background: #0000fe;
+  height: 64px;
+}
+
+@media screen and (max-width: 600px) {
+  .scroll {
+    height: 53px;
+  }
+}
+.scroll div {
+  padding: 0;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.scroll div img {
+  display: inline-block;
+}
+
+.div1 {
+  animation: marquee1 20s infinite linear;
+  animation-delay: -20s;
+}
+
+.div2 {
+  animation: marquee2 20s infinite linear;
+  animation-delay: -10s;
+}
+.scroll div:after {
+  content: url(../../images/scroll-line.png);
+}
+
+@media screen and (max-width: 600px) {
+  .scroll div:after {
+    content: url(../../images/scroll-line.png);
+  }
+}
+
+@keyframes marquee1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+/*===services===*/
+.services {
+  width: 100%;
+}
+
+.services__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
 }
