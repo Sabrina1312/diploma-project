@@ -1,1 +1,210 @@
+.hero {
+  width: 100%;
+}
 
+.hero__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 110px 0 70px 0;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__wrapper {
+    padding: 100px 0 70px 0;
+  }
+}
+
+.special-text {
+  width: fit-content;
+  font-family: "WADIK", sans-serif;
+  font-weight: normal;
+  font-size: clamp(60px, 13.3vw, 192px);
+  line-height: 100%;
+  color: #fff;
+  padding: 10px;
+  background-color: #0000ca;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .special-text {
+    font-size: clamp(65px, 15.6vw, 120px);
+  }
+}
+
+.main-text {
+  width: fit-content;
+  font-family: "Hauora", sans-serif;
+  font-weight: 700;
+  font-size: clamp(60px, 16.5vw, 240px);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #797979;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .main-text {
+    padding: 10px 0;
+  }
+}
+
+.special-text-down {
+  width: fit-content;
+  font-family: "WADIK", sans-serif;
+  font-weight: 400;
+  font-size: clamp(56px, 21vw, 305px);
+  line-height: 0.6;
+  text-transform: uppercase;
+  color: #dedede;
+  padding: 10px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.main-text-down {
+  width: fit-content;
+  font-family: "WADIK", sans-serif;
+  font-weight: 600;
+  font-size: clamp(60px, 13vw, 192px);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #0000ca;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .main-text-down {
+    line-height: 1.2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-text-down {
+    font-size: clamp(47px, 13vw, 100px);
+  }
+}
+
+.hero__item {
+  max-width: min-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  background: #fff;
+  padding: 20px 20px 10px 0;
+  position: absolute;
+  top: 49%;
+  left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero__item {
+    gap: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hero__item {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero__item {
+    margin-top: 10px;
+    gap: 10px;
+    padding-right: 0;
+  }
+}
+
+.hero__item h3 {
+  font-family: "WADIK", sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 1;
+  color: #000;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero__item h3 {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hero__item h3 {
+    font-size: 54px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero__item h3 {
+    font-size: clamp(25px, 7.03vw, 54px);
+  }
+}
+
+.hero__item h4 {
+  font-family: "WADIK", sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 1;
+  color: #0000fe;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero__item h4 {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hero__item h4 {
+    font-size: 66px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero__item h4 {
+    font-size: clamp(32px, 8.6vw, 66px);
+  }
+}
+
+.hero__item p {
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.hero__item p a {
+  font-family: "Hauora", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0000fe;
+}
+
+.hero__button {
+  width: fit-content;
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 25px;
+  background-color: #0000fe;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .hero__button {
+    width: 100%;
+    text-align: center;
+  }
+}
