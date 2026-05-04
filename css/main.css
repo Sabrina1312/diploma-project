@@ -11,14 +11,16 @@ body {
   color: #000;
 }
 
-h1 {
-  font-family: "Hauora", sans-serif;
+h2 {
+  font-family: "WADIK", sans-serif;
   font-weight: 600;
+  font-size: clamp(37px, 6.25vw, 64px);
 }
 
-h2 {
-  font-family: "Hauora", sans-serif;
+h3 {
+  font-family: "WADIK", sans-serif;
   font-weight: 700;
+  font-size: clamp(30px, 6.25vw, 48px);
 }
 
 p {
@@ -37,4 +39,26 @@ main {
   width: 100%;
   padding: 0 clamp(16px, 3vw, 40px);
   margin: 0 auto;
+}
+
+.button {
+  width: fit-content;
+  font-family: "Hauora", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 25px;
+  background-color: #0000fe;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0000ca;
+}
+
+.button:active {
+  background-color: #000c74;
 }
