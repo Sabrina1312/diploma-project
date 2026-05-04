@@ -78,6 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.5 },
   );
 
-  const span = document.querySelector(".languages__wrapper h3 .lang-highlight");
+  const span = document.querySelector(".languages__wrapper h2 .lang-highlight");
   if (span) observer.observe(span);
 });

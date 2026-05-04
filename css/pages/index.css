@@ -330,7 +330,7 @@
   }
 }
 
-.services__wrapper h2 {
+.services__wrapper h1 {
   text-align: center;
   color: #fff;
 }
@@ -463,17 +463,17 @@
   }
 }
 
-.languages__wrapper h3 {
+.languages__wrapper h2 {
   color: #fff;
 }
 
-.languages__wrapper h3 .lang-highlight {
+.languages__wrapper h2 .lang-highlight {
   padding: 0 5px;
   background-color: transparent;
   transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.languages__wrapper h3 .lang-highlight.visible {
+.languages__wrapper h2 .lang-highlight.visible {
   background-color: #0000fe;
 }
 
@@ -536,4 +536,235 @@
     text-align: center;
     margin: 30px auto 0;
   }
+}
+
+/*===advantages===*/
+.advantages {
+  width: 100%;
+  background: #fff;
+}
+
+.advantages__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
+}
+
+@media screen and (max-width: 400px) {
+  .advantages__wrapper {
+    padding: 45px 0;
+  }
+}
+
+.advantages__wrapper h3 {
+  color: #0000fe;
+  text-align: center;
+}
+
+.advantages__items {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: flex-end;
+}
+
+.advantages__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1.5px solid #000;
+  gap: 20px;
+  max-width: 1013px;
+  width: 100%;
+}
+
+.advantages__item:nth-child(2) {
+  max-width: 1128px;
+  width: 100%;
+}
+
+.advantages__item:nth-child(3) {
+  max-width: 1242px;
+  width: 100%;
+}
+
+.advantages__item:nth-child(4) {
+  max-width: 1360px;
+  width: 100%;
+  border-bottom: 1.5px solid #000;
+}
+
+@media screen and (max-width: 900px) {
+  .advantages__item,
+  .advantages__item:nth-child(2),
+  .advantages__item:nth-child(3),
+  .advantages__item:nth-child(4) {
+    max-width: 600px;
+  }
+  .advantages__item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
+    gap: 10px;
+  }
+}
+
+.advantages__item-title span {
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: clamp(18px, 4.1667vw, 32px);
+  color: #797979;
+}
+
+.advantages__item-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.advantages__item-title h4 {
+  font-family: "Hauora", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4.6875vw, 36px);
+  color: #000;
+  text-transform: uppercase;
+}
+
+.advantages__item-content {
+  width: 555px;
+}
+
+.advantages__item-content p {
+  font-family: "Hauora", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #000;
+}
+
+@media screen and (max-width: 767px) {
+  .advantages__item-content {
+    max-width: 555px;
+    width: 100%;
+  }
+}
+
+/*===faq===*/
+.faq {
+  width: 100%;
+  background: #fff;
+}
+
+.faq__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
+}
+
+@media screen and (max-width: 400px) {
+  .faq__wrapper {
+    padding: 45px 0;
+  }
+}
+
+.faq__wrapper h3 {
+  color: #0000fe;
+  text-align: center;
+}
+
+.accordion {
+  max-width: 1155px;
+  width: 100%;
+  font-family: "Hauora", sans-serif;
+  color: #000;
+  margin: 50px 0 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .accordion {
+    max-width: 600px;
+  }
+}
+
+details {
+  padding: 20px 0;
+  border-top: 1.5px solid #000;
+}
+
+@media screen and (max-width: 400px) {
+  details {
+    padding: 15px 0;
+  }
+}
+
+details:nth-child(4) {
+  border-bottom: 1.5px solid #000;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+summary h4 {
+  max-width: 900px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 900px) {
+  summary h4 {
+    padding-right: 10%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  summary h4 {
+    font-size: 16px;
+  }
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "<";
+  float: right;
+  font-size: 1.5rem;
+  line-height: 1;
+  transform: rotate(-90deg);
+}
+
+details[open] summary::before {
+  content: ">";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .accordion-content {
+    padding-right: 10%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .accordion-content {
+    margin-top: 15px;
+    padding-right: 0;
+  }
+}
+
+details[open] .accordion-content {
+  max-height: 200px;
 }
