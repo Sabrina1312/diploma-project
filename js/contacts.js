@@ -1,3 +1,43 @@
+const mapSection = document.querySelector(".map");
+let mapLoaded = false;
+
+function loadMap() {
+  if (mapLoaded) return;
+
+  const iframe = mapSection.querySelector("iframe");
+  const src = iframe.getAttribute("data-src");
+  if (src) {
+    iframe.src = src;
+    iframe.removeAttribute("data-src");
+    mapLoaded = true;
+  }
+}
+
+// Загружаем при скролле
+const mapObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        loadMap();
+        mapObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 },
+);
+
+mapObserver.observe(mapSection);
+
+// Дополнительно: загружаем через 3 секунды после загрузки страницы
+setTimeout(() => {
+  if (
+    !mapLoaded &&
+    window.scrollY + window.innerHeight > mapSection.offsetTop - 500
+  ) {
+    loadMap();
+  }
+}, 3000);
+
 document.getElementById("attachSvg").onclick = () =>
   document.getElementById("fileInput").click();
 

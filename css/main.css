@@ -46,6 +46,86 @@ main {
   margin: 0 auto;
 }
 
+.lock {
+  overflow: hidden;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 375px;
+    max-height: 812px;
+    height: 100vh;
+    background: white;
+    transition: right 0.3s;
+    z-index: 100;
+  }
+
+  .mobile-menu__wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 15px 50px 15px;
+  }
+
+  .mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 80px;
+    font-family: "Hauora", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #171717;
+  }
+
+  .mobile-menu-list li a.active {
+    color: #0000fe;
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 32px;
+    right: 17px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .mobile-menu__items {
+    display: flex;
+    align-items: flex-end;
+    gap: 50px;
+    margin-top: auto;
+  }
+
+  .mobile-menu__items ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .mobile-menu__social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+}
+
 .button {
   font-family: "Hauora", sans-serif;
   font-weight: 600;
