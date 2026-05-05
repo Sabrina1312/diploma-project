@@ -254,16 +254,24 @@
   align-items: center;
   overflow-x: hidden;
   background: #0000fe;
-  height: 64px;
+  height: 70px;
   margin-bottom: 70px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .scroll {
+    height: 64px;
+    margin-bottom: 34px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .scroll {
     height: 53px;
     margin-bottom: 34px;
   }
 }
+
 .scroll div {
   padding: 0;
   white-space: nowrap;
@@ -283,14 +291,9 @@
   animation: marquee2 20s infinite linear;
   animation-delay: -10s;
 }
+
 .scroll div:after {
   content: url(../../images/scroll-line.png);
-}
-
-@media screen and (max-width: 600px) {
-  .scroll div:after {
-    content: url(../../images/scroll-line.png);
-  }
 }
 
 @keyframes marquee1 {
@@ -831,11 +834,6 @@ details[open] .accordion-content {
   display: flex;
   align-items: center;
   gap: 15px;
-}
-
-.support-banner__button {
-  background-color: #fff;
-  color: #0000fe;
 }
 
 @media screen and (max-width: 400px) {

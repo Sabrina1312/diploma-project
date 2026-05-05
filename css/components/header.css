@@ -50,7 +50,7 @@
   color: #000;
 }
 
-.header__nav li:last-child {
+.header__button {
   padding: 10px 30px;
   border-radius: 25px;
   color: #fff;

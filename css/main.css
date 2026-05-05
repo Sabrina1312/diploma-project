@@ -48,7 +48,6 @@ main {
 }
 
 .button {
-  width: fit-content;
   font-family: "Hauora", sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -69,12 +68,44 @@ main {
   background-color: #000c74;
 }
 
-.social-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: transparent;
+.social-button-blue {
+  fill: #0000fe;
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+.social-button-blue:hover {
+  fill: #0000ca;
+}
+
+.social-button-blue:active {
+  fill: #000c74;
+}
+
+.social-button-black {
+  fill: #171717;
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+.social-button-black:hover {
+  fill: #0000fe;
+}
+
+.social-button-black:active {
+  fill: #000c74;
+}
+
+.button-white {
+  width: fit-content;
+  font-family: "Hauora", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0000fe;
+  padding: 10px 30px;
+  border-radius: 25px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
