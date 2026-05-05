@@ -6,7 +6,6 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   background-color: #fff;
   color: #000;
 }
@@ -118,4 +117,45 @@ main {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.button-up {
+  position: fixed;
+  bottom: 255px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  fill: #fff;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 9999;
+}
+
+.button-up.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button-up:hover {
+  fill: #0000fe;
+}
+
+.button-up path {
+  fill: #171717;
+}
+
+.button-up:hover path {
+  fill: #fff;
+}
+
+.button-up circle {
+  stroke: #171717;
+}
+
+.button-up:hover circle {
+  stroke: #0000fe;
 }
