@@ -844,16 +844,6 @@ details[open] .accordion-content {
   }
 }
 
-.support-banner__social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: transparent;
-}
-
 .support-banner__image {
   border-radius: 15px;
 }
