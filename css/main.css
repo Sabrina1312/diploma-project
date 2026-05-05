@@ -109,3 +109,13 @@ main {
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
+
+.color-white {
+  color: #fff;
+}
+
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

@@ -1,0 +1,94 @@
+.hero {
+  display: grid;
+  grid-template-areas: "stack";
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(to bottom, #17171766 0%, rgba(23, 23, 23, 0) 100px),
+    linear-gradient(to top, #171717 0%, rgba(23, 23, 23, 0) 450px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero picture,
+.hero img {
+  grid-area: stack;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  position: relative;
+}
+
+.hero__content {
+  grid-area: stack;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  align-items: center;
+  color: white;
+  position: relative;
+  padding: 0 20px 70px 20px;
+}
+
+.hero__content h1 {
+  font-size: clamp(29px, 7.5vw, 67px);
+}
+
+.hero__content h2 {
+  font-family: "Hauora", sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 4vw, 36px);
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.hero__button {
+  margin-top: 20px;
+}
+
+/*===languages===*/
+.languages {
+  width: 100%;
+  background: #171717;
+}
+
+.languages__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 140px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .languages__wrapper {
+    padding: 180px 0 140px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .languages__wrapper {
+    padding: 257px 0 90px 0;
+  }
+}
+
+.languages__inner {
+  display: flex;
+}
+
+.languages__title {
+  max-width: 210px;
+  width: 100%;
+}
+
+.languages__title h3 {
+  font-size: clamp(29px, 3.2vw, 37px);
+  color: #fff;
+}

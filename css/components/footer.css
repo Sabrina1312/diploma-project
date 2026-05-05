@@ -1,14 +1,7 @@
 .footer {
   width: 100%;
   background: #171717;
-  margin-top: 70px;
   color: #fff;
-}
-
-@media screen and (max-width: 400px) {
-  .footer {
-    margin-top: 45px;
-  }
 }
 
 .footer__wrapper {

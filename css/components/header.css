@@ -41,13 +41,13 @@
   display: flex;
   align-items: center;
   gap: 77px;
+  color: #000;
 }
 
 .header__nav li {
   font-family: "Hauora", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  color: #000;
 }
 
 .header__button {

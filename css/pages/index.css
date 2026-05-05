@@ -1,5 +1,6 @@
 .hero {
   width: 100%;
+  background: #fff;
 }
 
 .hero__wrapper {
@@ -778,12 +779,12 @@ details[open] .accordion-content {
 }
 
 .support-banner__wrapper {
-  padding: 70px 0;
+  padding: 140px 0;
 }
 
 @media screen and (max-width: 400px) {
   .support-banner__wrapper {
-    padding: 45px 0;
+    padding: 90px 0;
   }
 }
 
