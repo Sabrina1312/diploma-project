@@ -471,16 +471,6 @@
   color: #fff;
 }
 
-.languages__wrapper h2 .lang-highlight {
-  padding: 0 5px;
-  background-color: transparent;
-  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.languages__wrapper h2 .lang-highlight.visible {
-  background-color: #0000fe;
-}
-
 .languages__wrapper p {
   font-weight: 600;
   color: #fff;

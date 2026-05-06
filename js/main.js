@@ -33,3 +33,30 @@ if (closeButton) {
     docTlement.classList.remove("lock");
   });
 }
+
+//Функция закрашивания текста, с отслеживанием его появления
+document.addEventListener("DOMContentLoaded", () => {
+  const spanElements = document.querySelectorAll(".highlight-span");
+
+  if (spanElements.length === 0) return;
+
+  // Создаём один observer для всех элементов
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    },
+  );
+
+  // Наблюдаем за каждым найденным элементом
+  spanElements.forEach((element) => {
+    observer.observe(element);
+  });
+});

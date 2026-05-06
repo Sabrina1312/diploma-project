@@ -32,7 +32,41 @@ p {
   font-family: "Hauora", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 1.36;
+}
+
+.link,
+.link-inside {
+  color: #0000fe;
+}
+
+.link-inside {
+  font-weight: 800;
+}
+
+.link-hover {
+  color: #171717;
+  transition: color 0.3s ease-in-out;
+}
+
+.link-hover:hover {
+  color: #0000fe;
+}
+
+/* Анимация закрашивания текста, с отслеживанием его появления */
+.animated-text {
+}
+
+.highlight-span {
+  display: inline;
+  background: linear-gradient(to right, #0000fe 0%, #0000fe 100%) no-repeat left
+    bottom;
+  background-size: 0% 100%;
+  transition: background-size 1s ease-out;
+}
+
+.highlight-span.visible {
+  background-size: 100% 100%;
 }
 
 main {
