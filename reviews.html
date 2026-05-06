@@ -14,13 +14,17 @@
     <meta name="author" content="Бюро переводов «Языки Мира»" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/pages/reviews.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <title>Отзывы | Бюро переводов «Языки Мира»</title>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="header__wrapper">
-          <div class="header__logo">logo</div>
+          <a href="index.html" class="header__logo">logo</a>
           <nav>
             <ul class="header__nav color-white">
               <li>
@@ -30,7 +34,7 @@
                 <a class="link-hover" href="about.html">О НАС</a>
               </li>
               <li>
-                <a class="link-hover" href="reviews.html">ОТЗЫВЫ</a>
+                <a class="link-hover" href="#">ОТЗЫВЫ</a>
               </li>
               <li>
                 <a class="button header__button" href="contacts.html"
@@ -71,8 +75,8 @@
         </ul>
         <div class="mobile-menu__items">
           <ul>
-            <li><a href="#">+7 904 555 11 25</a></li>
-            <li><a href="#">+7 906 252 95 95</a></li>
+            <li><a href="tel:+79045551125">+7 904 555 11 25</a></li>
+            <li><a href="tel:+79062529595">+7 906 252 95 95</a></li>
           </ul>
           <a class="contacts__mail" href="mailto:perevodmira@mail.ru"
             >perevodmira@mail.ru</a
@@ -130,7 +134,111 @@
         </ul>
       </div>
     </div>
-    <main></main>
+    <main>
+      <section class="reviews">
+        <div class="reviews__wrapper">
+          <h1>ОТЗЫВЫ</h1>
+          <div class="swiper reviews__swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div class="reviews-avatar" data-name="ФАРИД САМЫЙ"></div>
+                    <h4 class="reviews-name">ФАРИД САМЫЙ</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Могу смело порекомендовать, сделали в срок и без ошибок.
+                    Услугой доволен!
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div class="reviews-avatar" data-name="NAZIK79"></div>
+                    <h4 class="reviews-name">NAZIK79</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Хочу сказать спасибо данной организации, созвонился,
+                    объяснил что критическая ситуация, перевод нужен срочно.
+                    Через час перевод был уже у меня на руках, большое спасибо
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div
+                      class="reviews-avatar"
+                      data-name="БОГДАН АХМЕДЬЯНОВ"
+                    ></div>
+                    <h4 class="reviews-name">БОГДАН АХМЕДЬЯНОВ</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Лучший перевод, сразу приняли. Спасибо большое!! Девушка
+                    проконсультировала и все объяснила, цена не дорогая
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div
+                      class="reviews-avatar"
+                      data-name="ОЛЬГА КЛИНЦОВА"
+                    ></div>
+                    <h4 class="reviews-name">ОЛЬГА КЛИНЦОВА</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Прекрасное место для быстрого перевода документов. Я пришла
+                    отдала, после обеда забрала- красота. Четко, быстро. Не
+                    могла найти вход, позвонила , девушка меня легко
+                    сориентировала. Цены лояльные! Процветания вам!
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div
+                      class="reviews-avatar"
+                      data-name="ЗАФАР АСАНБЕКОВ"
+                    ></div>
+                    <h4 class="reviews-name">ЗАФАР АСАНБЕКОВ</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Делал здесь перевод паспорта для друга, которому срочно надо
+                    было устроиться на работу. Сделали всё быстро и качественно.
+                    Менеджеры очень добрые и отзывчивые, крайне сильно
+                    рекомендую данное бюро!!
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-slide">
+                  <div class="reviews-title">
+                    <div
+                      class="reviews-avatar"
+                      data-name="АНОНИМНЫЙ ОТЗЫВ"
+                    ></div>
+                    <h4 class="reviews-name">АНОНИМНЫЙ ОТЗЫВ</h4>
+                  </div>
+                  <p class="reviews-content">
+                    Сходу поняли, что мне нужно, сразу разъяснили что как и за
+                    сколько, сориентировали по времени. Очень все быстро и
+                    удобно! Приходите, не пожалейте! Ребята знают свое дело! Ни
+                    1 ошибки не допустили в переводах, это самое главное!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="button reviews__button" href="#">ОСТАВИТЬ ОТЗЫВ</a>
+        </div>
+      </section>
+    </main>
     <footer class="footer">
       <div class="container">
         <div class="footer__wrapper">
@@ -141,10 +249,10 @@
             <div class="footer__item">
               <ul class="footer__list">
                 <li><h5>ПОИСК</h5></li>
-                <li><a href="#">Услуги</a></li>
-                <li><a href="#">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="about.html">О нас</a></li>
                 <li><a href="#">Отзывы</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
               </ul>
             </div>
             <div class="footer__item">
@@ -170,8 +278,8 @@
             </div>
             <div class="footer__item">
               <ul class="footer__list footer__list-phone">
-                <li><a href="#">+7 904 555 11 25</a></li>
-                <li><a href="#">+7 906 252 95 95</a></li>
+                <li><a href="tel:+79045551125">+7 904 555 11 25</a></li>
+                <li><a href="tel:+79062529595">+7 906 252 95 95</a></li>
               </ul>
               <a class="footer__mail" href="mailto:perevodmira@mail.ru"
                 >perevodmira@mail.ru</a
@@ -266,6 +374,8 @@
         </defs>
       </svg>
     </button>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="./js/swiper.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/reviews.js"></script>
   </body>

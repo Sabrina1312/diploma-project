@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   background-color: #fff;
   color: #000;
+  letter-spacing: 0.02rem;
 }
 
 h1 {
@@ -45,12 +46,11 @@ p {
 }
 
 .link-hover {
-  color: #171717;
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .link-hover:hover {
-  color: #0000fe;
+  opacity: 0.7;
 }
 
 /* Анимация закрашивания текста, с отслеживанием его появления */
@@ -164,7 +164,7 @@ main {
   font-family: "Hauora", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: normal;
   color: #fff;
   padding: 10px 30px;
   border-radius: 25px;
