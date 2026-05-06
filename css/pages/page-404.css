@@ -1,0 +1,50 @@
+.page-404 {
+  width: 100%;
+  background: #fff;
+}
+
+.page-404__wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 201px 0 103px;
+  gap: 5px;
+}
+
+.page-404__wrapper h1 {
+  font-size: clamp(48px, 13.02vw, 100px);
+  color: #0000fe;
+}
+
+.page-404__wrapper h2 {
+  font-family: "Hauora", sans-serif;
+  font-size: clamp(160px, 35.94vw, 270px);
+  line-height: 1;
+  color: #0000fe;
+}
+
+.page-404__wrapper h3 {
+  font-size: clamp(29px, 4.82vw, 37px);
+  color: #171717;
+  margin-top: 25px;
+}
+
+.page-404__button {
+  margin: 45px auto 0;
+}
+
+@media screen and (max-width: 768px) {
+  .page-404__wrapper {
+    padding: 210px 0 140px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-404__wrapper {
+    padding: 160px 0 90px 0;
+  }
+
+  .page-404__button {
+    width: 100%;
+  }
+}
