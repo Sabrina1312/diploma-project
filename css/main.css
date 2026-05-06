@@ -8,7 +8,6 @@ body {
   flex-direction: column;
   background-color: #fff;
   color: #000;
-  letter-spacing: 0.02rem;
 }
 
 h1 {
@@ -34,6 +33,11 @@ p {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.36;
+}
+
+mark {
+  background-color: transparent;
+  color: #ff0000;
 }
 
 .link,
