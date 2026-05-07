@@ -1,3 +1,34 @@
+function updateScrollImages() {
+  // Определяем ширину экрана
+  const width = window.innerWidth;
+  let imgSrc;
+
+  if (width <= 480) {
+    imgSrc = "./images/scroll-line-mobile.png"; // для мобильных
+  } else if (width <= 768) {
+    imgSrc = "./images/scroll-line-tablet.png"; // для планшета
+  } else {
+    imgSrc = "./images/scroll-line.png"; // для десктопа
+  }
+
+  // Находим ВСЕ img внутри .scroll и меняем src
+  const allImages = document.querySelectorAll(".scroll img");
+  allImages.forEach((img) => {
+    img.src = imgSrc;
+  });
+}
+
+// Запускаем при загрузке страницы
+window.addEventListener("DOMContentLoaded", updateScrollImages);
+
+// Запускаем при изменении размера окна (с задержкой)
+let resizeTimer;
+window.addEventListener("resize", function () {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(updateScrollImages, 200);
+});
+
+//Функция изменения цвета и бэкграунда элементов на главной странице
 const specialText = document.querySelector(".special-text");
 const mainText = document.querySelector(".main-text");
 const specialTextDown = document.querySelector(".special-text-down");
