@@ -101,6 +101,7 @@
 
 @media screen and (max-width: 480px) {
   .reviews__button {
+    width: 100%;
     margin: 50px 16px 0 0;
     text-align: center;
   }

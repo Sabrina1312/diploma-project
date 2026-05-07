@@ -3,33 +3,45 @@
 @import url("components/header.css");
 @import url("components/footer.css");
 
+:root {
+  --font-family: "Hauora", sans-serif;
+  --third-family: "Wadik", sans-serif;
+  --accent-color: #0000fe;
+  --blue-color: #0000ca;
+  --dark-blue-color: #000c74;
+  --light-grey-color: #dedede;
+  --gray-color: #797979;
+  --black-color: #171717;
+  --white-color: #fff;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--white-color);
+  color: var(--black-color);
 }
 
 h1 {
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 600;
   font-size: clamp(37px, 6.25vw, 64px);
 }
 
 h2 {
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 700;
   font-size: clamp(30px, 6.25vw, 48px);
 }
 
 h3 {
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 700;
   font-size: clamp(30px, 6.25vw, 64px);
 }
 
 p {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.36;
@@ -294,11 +306,11 @@ main {
   font-size: 16px;
   line-height: normal;
   background: #fff;
-  border: 1px solid #000;
   position: fixed;
   right: 40px;
   bottom: 25px;
   z-index: 9999;
+  box-shadow: 0 0 20px 0 rgba(110, 110, 110, 0.25);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;

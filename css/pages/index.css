@@ -260,14 +260,14 @@
 
 @media screen and (max-width: 768px) {
   .scroll {
-    height: 64px;
+    height: 50px;
     margin-bottom: 34px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .scroll {
-    height: 53px;
+    height: 40px;
   }
 }
 
@@ -284,13 +284,13 @@
 }
 
 .div1 {
-  animation: marquee1 20s infinite linear;
-  animation-delay: -20s;
+  animation: marquee1 40s infinite linear;
+  animation-delay: -40s;
 }
 
 .div2 {
-  animation: marquee2 20s infinite linear;
-  animation-delay: -10s;
+  animation: marquee2 40s infinite linear;
+  animation-delay: -20s;
 }
 
 @keyframes marquee1 {
