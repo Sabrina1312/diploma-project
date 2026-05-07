@@ -1,3 +1,4 @@
+//Кнопка вверх
 const buttonUp = document.querySelector(".button-up");
 
 window.addEventListener("scroll", () => {
