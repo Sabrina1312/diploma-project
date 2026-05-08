@@ -770,7 +770,7 @@ details[open] .accordion-content {
 
 @media screen and (max-width: 400px) {
   .support-banner__wrapper {
-    padding: 90px 0;
+    padding: 45px 0;
   }
 }
 
