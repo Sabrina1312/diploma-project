@@ -112,7 +112,7 @@ main {
     right: -100%;
     width: 375px;
     max-height: 812px;
-    height: 100vh;
+    height: 100dvh;
     background: white;
     transition: right 0.3s;
     z-index: 100;
