@@ -115,10 +115,11 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
+input:focus {
+  outline: navajowhite;
+}
 /* Фокус (доступность) */
 :focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
 }
 
 /* Для мыши убираем outline, но не удаляем полностью для доступности */

@@ -173,96 +173,175 @@
         <div class="container">
           <div class="calculate__wrapper">
             <h1>РАСЧЕТ СТОИМОСТИ</h1>
-            <form class="calculator-form" id="calculatorForm">
+            <form class="calculate__form" id="calculatorForm">
               <!-- Языки -->
-              <div class="calculator-item">
+              <div class="form-items">
                 <h2>ЯЗЫК</h2>
-                <div class="calculator-choices">
-                  <div class="form-field choice-langs">
+                <div class="form-groups">
+                  <div class="form-group form-select">
                     <label>С</label>
                     <select id="langFrom" required>
                       <option value="english">Английский</option>
-                      <option value="german">Немецкий</option>
-                      <option value="french">Французский</option>
+                      <option value="azerbaijani">Азербайджанский</option>
+                      <option value="arabic">Арабский</option>
+                      <option value="armenian">Армянский</option>
+                      <option value="belarusian">Белорусский</option>
+                      <option value="bulgarian">Болгарский</option>
+                      <option value="bosnian">Боснийский</option>
+                      <option value="hungarian">Венгерский</option>
+                      <option value="greek">Греческий</option>
+                      <option value="georgian">Грузинский</option>
+                      <option value="dari">Дари</option>
+                      <option value="hebrew">Иврит</option>
+                      <option value="spanish">Испанский</option>
+                      <option value="italian">Итальянский</option>
+                      <option value="kazakh">Казахский</option>
+                      <option value="kyrgyz">Кыргызский</option>
                       <option value="chinese">Китайский</option>
+                      <option value="latvian">Латышский</option>
+                      <option value="lithuanian">Литовский</option>
+                      <option value="moldovan">Молдавский</option>
+                      <option value="german">Немецкий</option>
+                      <option value="polish">Польский</option>
+                      <option value="portuguese">Португальский</option>
+                      <option value="pashto">Пушту</option>
+                      <option value="romanian">Румынский</option>
+                      <option value="serbian">Сербский</option>
+                      <option value="slovak">Словацкий</option>
+                      <option value="slovenian">Словенский</option>
+                      <option value="tajik">Таджикский</option>
+                      <option value="turkish">Турецкий</option>
+                      <option value="turkmen">Туркменский</option>
+                      <option value="uzbek">Узбекский</option>
+                      <option value="ukrainian">Украинский</option>
+                      <option value="farsi">Фарси</option>
+                      <option value="finnish">Финский</option>
+                      <option value="french">Французский</option>
+                      <option value="croatian">Хорватский</option>
+                      <option value="montenegrin">Черногорский</option>
+                      <option value="czech">Чешский</option>
+                      <option value="estonian">Эстонский</option>
                     </select>
                   </div>
 
-                  <div class="form-field choice-langs">
+                  <div class="form-group form-select">
                     <label>На</label>
                     <select id="langTo" required>
                       <option value="russian">Русский</option>
                       <option value="english">Английский</option>
-                      <option value="german">Немецкий</option>
-                      <option value="french">Французский</option>
+                      <option value="azerbaijani">Азербайджанский</option>
+                      <option value="arabic">Арабский</option>
+                      <option value="armenian">Армянский</option>
+                      <option value="belarusian">Белорусский</option>
+                      <option value="bulgarian">Болгарский</option>
+                      <option value="bosnian">Боснийский</option>
+                      <option value="hungarian">Венгерский</option>
+                      <option value="greek">Греческий</option>
+                      <option value="georgian">Грузинский</option>
+                      <option value="dari">Дари</option>
+                      <option value="hebrew">Иврит</option>
+                      <option value="spanish">Испанский</option>
+                      <option value="italian">Итальянский</option>
+                      <option value="kazakh">Казахский</option>
+                      <option value="kyrgyz">Кыргызский</option>
                       <option value="chinese">Китайский</option>
+                      <option value="latvian">Латышский</option>
+                      <option value="lithuanian">Литовский</option>
+                      <option value="moldovan">Молдавский</option>
+                      <option value="german">Немецкий</option>
+                      <option value="polish">Польский</option>
+                      <option value="portuguese">Португальский</option>
+                      <option value="pashto">Пушту</option>
+                      <option value="romanian">Румынский</option>
+                      <option value="serbian">Сербский</option>
+                      <option value="slovak">Словацкий</option>
+                      <option value="slovenian">Словенский</option>
+                      <option value="tajik">Таджикский</option>
+                      <option value="turkish">Турецкий</option>
+                      <option value="turkmen">Туркменский</option>
+                      <option value="uzbek">Узбекский</option>
+                      <option value="ukrainian">Украинский</option>
+                      <option value="farsi">Фарси</option>
+                      <option value="finnish">Финский</option>
+                      <option value="french">Французский</option>
+                      <option value="croatian">Хорватский</option>
+                      <option value="montenegrin">Черногорский</option>
+                      <option value="czech">Чешский</option>
+                      <option value="estonian">Эстонский</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              <!-- Вид документа -->
-              <div class="form-field">
-                <label>Вид документа</label>
-                <select id="documentType">
-                  <option value="personal">Личные документы</option>
-                  <option value="education">
-                    Документы об образовании (+100 руб)
-                  </option>
-                  <option value="legal">
-                    Юридические документы (+200 руб)
-                  </option>
-                  <option value="medical">
-                    Медицинские документы (+200 руб)
-                  </option>
-                  <option value="other">Другое (+200 руб)</option>
-                </select>
+              <div class="form-items">
+                <h2>
+                  Вид<br />
+                  доку<wbr />мента
+                </h2>
+                <div class="form-document">
+                  <div class="form-group wide-group form-select">
+                    <select id="documentType">
+                      <option value="personal">Личные документы</option>
+                      <option value="education">
+                        Документы об образовании (+100 руб)
+                      </option>
+                      <option value="legal">
+                        Юридические документы (+200 руб)
+                      </option>
+                      <option value="medical">
+                        Медицинские документы (+200 руб)
+                      </option>
+                      <option value="other">Другое (+200 руб)</option>
+                    </select>
+                  </div>
+                  <!-- Количество страниц -->
+                  <div class="form-group wide-group form-select">
+                    <h4>КОЛ-ВО СТРАНИЦ (ЕСЛИ ВИД ДОКУМЕНТА – ДРУГОЕ)</h4>
+                    <input type="number" id="pagesCount" min="1" value="" />
+                  </div>
+                </div>
               </div>
 
-              <!-- Количество страниц -->
-              <div class="form-field">
-                <label>Количество страниц</label>
-                <input type="number" id="pagesCount" min="1" value="1" />
-                <small
-                  >Дополнительные страницы: +700 руб/страница (сверх
-                  первой)</small
-                >
-              </div>
-
-              <!-- Дополнительные услуги -->
-              <div class="form-field">
-                <label>Дополнительные услуги</label>
-                <div class="checkbox-group">
-                  <label>
-                    <input type="checkbox" id="notaryCert" value="800" />
-                    Нотариальное заверение (+800 руб)
-                  </label>
-                  <label>
-                    <input type="checkbox" id="notaryCopy" value="200" />
-                    Нотариальная копия перевода (+200 руб/страница)
-                  </label>
+              <div class="form-items add-services">
+                <h2>Доп. услуги</h2>
+                <div class="form-groups">
+                  <div class="form-group">
+                    <div class="group-item">
+                      <input type="radio" id="notaryCert" value="800" />
+                      <p>Нотариальное заверение</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="group-item">
+                      <input type="radio" id="notaryCopy" value="200" />
+                      <p>Нотариальная копия перевода</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <!-- Тариф -->
-              <div class="form-field">
-                <label>Тариф</label>
-                <select id="tariff">
-                  <option value="nonUrgent">Несрочный</option>
-                  <option value="urgent">Срочный</option>
-                  <option value="superUrgent">Сверхсрочный</option>
-                </select>
-              </div>
+              <div class="form-items">
+                <h2>Тариф</h2>
+                <div class="form-groups">
+                  <div class="form-group">
+                    <div class="group-item">
+                      <input type="radio" id="nonUrgent" value="0" />
+                      <p>Несрочный (от 2 рабочих дней)</p>
+                    </div>
+                    <div class="group-item group-item_type_center">
+                      <input type="radio" id="superUrgent" value="1000" />
+                      <p>Срочный (на следующий рабочий день)</p>
+                    </div>
+                  </div>
 
-              <!-- Результат -->
-              <div class="form-field">
-                <label>СТОИМОСТЬ*:</label>
-                <div class="price-display" id="priceDisplay">0 РУБ.</div>
-                <small class="price-note">
-                  *Итоговая стоимость услуги может отличаться, отправьте запрос
-                  о расчете стоимости, прикрепив документ, и наш менеджер
-                  свяжется с Вами.
-                </small>
+                  <div class="form-group">
+                    <div class="group-item">
+                      <input type="radio" id="urgent" value="500" />
+                      <p>Сверхсрочный (от 2 часов)</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
