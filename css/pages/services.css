@@ -21,18 +21,6 @@
   z-index: 3;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 13%;
-  left: 0;
-  right: 0;
-  height: 450px;
-  background: linear-gradient(360deg, #171717 60%, rgba(23, 23, 23, 0) 100%);
-  pointer-events: none;
-  z-index: 4;
-}
-
 .hero picture,
 .hero img {
   grid-area: stack;
@@ -47,11 +35,12 @@
   grid-area: stack;
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  margin-top: 751px;
   align-items: center;
   color: var(--white-color);
   z-index: 5;
   padding: 0 40px 70px 40px;
+  background: linear-gradient(360deg, #171717 0%, rgba(23, 23, 23, 0) 100%);
 }
 
 .hero__content h1 {
@@ -74,68 +63,36 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   .hero::before {
-    height: 90px;
+    height: 100px;
+  }
+  .hero__content {
+    margin-top: 526px;
+    padding: 0 20px 70px 20px;
   }
 
-  .hero__content {
-    margin-top: 522px;
-    padding: 0 20px 90px 20px;
-  }
   .hero__content h2 {
     font-size: 36px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .hero::before {
-    height: 110px;
-  }
-  .hero::after {
-    height: 170px;
-  }
-  .hero__inner {
+  .hero__content {
+    margin-top: 386px;
     padding: 0 16px 45px 16px;
+  }
+  .hero__content h1 {
+    font-size: 29px;
+  }
+  .hero__content h2 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .hero__button {
+    width: 100%;
+    text-align: center;
   }
 }
 
 /*===languages===*/
-.languages {
-  width: 100%;
-  background: var(--black-color);
-}
-
-.languages__wrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 140px 0;
-}
-
-@media screen and (max-width: 768px) {
-  .languages__wrapper {
-    padding: 180px 0 140px 0;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .languages__wrapper {
-    padding: 257px 0 90px 0;
-  }
-}
-
-.languages__inner {
-  display: flex;
-}
-
-.languages__title {
-  max-width: 210px;
-  width: 100%;
-}
-
-.languages__title h3 {
-  font-family: var(--third-family);
-  font-weight: 700;
-  font-size: clamp(29px, 3.2vw, 37px);
-  color: var(--white-color);
-}
