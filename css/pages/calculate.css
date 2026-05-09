@@ -174,7 +174,7 @@ option:first-of-type {
   border-bottom: 1.5px solid #171717;
 }
 
-.wide-group h4 {
+.wide-group h3 {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
