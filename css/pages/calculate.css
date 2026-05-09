@@ -1,6 +1,6 @@
 .calculate {
   width: 100%;
-  background: #fff;
+  background: var(--white-color);
 }
 
 .calculate__wrapper {
@@ -23,7 +23,7 @@
 
 .calculate__wrapper h1 {
   font-weight: 700;
-  color: #0000fe;
+  color: var(--accent-color);
   text-align: center;
 }
 
@@ -97,7 +97,7 @@ option::checkmark {
 
 select {
   border-radius: 0;
-  border-bottom: 1.5px solid #171717;
+  border-bottom: 1.5px solid var(--black-color);
 }
 
 select::picker-icon {
@@ -132,7 +132,7 @@ option {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
-  color: var(--black);
+  color: var(--black-color);
   padding: 5px 0 5px 0;
 }
 
@@ -173,7 +173,7 @@ option:first-of-type {
 
 .wide-group input {
   padding: 5px;
-  border-bottom: 1.5px solid #171717;
+  border-bottom: 1.5px solid var(--black-color);
 }
 
 .wide-group h3 {

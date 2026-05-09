@@ -64,12 +64,12 @@
   font-weight: 700;
   font-size: clamp(24px, 4.8vw, 36px);
   text-transform: uppercase;
-  color: #fff;
+  color: var(--white-color);
   margin-top: auto;
 }
 
 .about__file h4 span {
-  border-top: 1px solid #171717;
+  border-top: 1px solid var(--black-color);
 }
 
 @media (max-width: 768px) {
@@ -108,24 +108,24 @@
 
 .about__content h2 {
   font-size: clamp(29px, 6vw, 37px);
-  color: #0000fe;
+  color: var(--accent-color);
   margin-bottom: 28px;
 }
 
 .about__subtitle {
   padding: 20px 0;
-  border-top: 1.5px solid #171717;
+  border-top: 1.5px solid var(--black-color);
 }
 
 .about__subtitle:nth-child(4) {
-  border-bottom: 1.5px solid #171717;
+  border-bottom: 1.5px solid var(--black-color);
 }
 
 .about__subtitle h3 {
   font-family: "Hauora", sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: #171717;
+  color: var(--black-color);
 }
 
 .about__inner {
@@ -156,13 +156,13 @@
   height: 210px;
   padding: 15px;
   border-radius: 15px;
-  border: 2.2px solid #171717;
-  color: #171717;
+  border: 2.2px solid var(--black-color);
+  color: var(--black-color);
 }
 
 .about__item:last-child {
   border: none;
-  background: #0000fe;
+  background: var(--accent-color);
 }
 
 .about__item h4 {
@@ -219,13 +219,13 @@
 .foundling {
   font-size: clamp(20px, 4.2vw, 36px);
   font-weight: 500;
-  color: #171717;
+  color: var(--black-color);
   margin-top: 60px;
 }
 
 .foundling span {
   font-weight: 600;
-  color: #fff;
+  color: var(--white-color);
   padding: 0 10px;
 }
 

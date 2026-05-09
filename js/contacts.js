@@ -53,7 +53,7 @@ document.getElementById("attachSvg").onclick = () =>
 
 // --- Функция показа попапа ---
 function showSuccessPopup() {
-  const popup = document.querySelector(".success-popup__overlay");
+  const popup = document.getElementById("contactsPopup");
   popup.classList.add("success-popup_opened");
 
   // Закрытие по кнопке

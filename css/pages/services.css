@@ -2,6 +2,8 @@
   display: grid;
   grid-template-areas: "stack";
   position: relative;
+  height: 100vh;
+  background: var(--black-color);
 }
 
 .hero::before {
@@ -64,22 +66,26 @@
   flex-direction: column;
   margin-top: auto;
   align-items: center;
-  color: white;
+  color: var(--white-color);
   position: relative;
   padding: 0 20px 70px 20px;
   z-index: 5;
 }
 
 .hero__content h1 {
-  font-size: clamp(29px, 7.5vw, 67px);
+  font-family: var(--third-family);
+  font-weight: 700;
+  font-size: clamp(29px, 8.33vw, 67px);
+  text-align: center;
 }
 
 .hero__content h2 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 800;
   font-size: clamp(20px, 4vw, 36px);
   text-transform: uppercase;
   margin-top: 20px;
+  text-align: center;
 }
 
 .hero__button {
@@ -89,7 +95,7 @@
 /*===languages===*/
 .languages {
   width: 100%;
-  background: #171717;
+  background: var(--black-color);
 }
 
 .languages__wrapper {
@@ -101,6 +107,12 @@
 @media screen and (max-width: 768px) {
   .languages__wrapper {
     padding: 180px 0 140px 0;
+  }
+  .hero__content {
+    padding: 0 20px 0 20px;
+  }
+  .hero__content h2 {
+    font-size: 36px;
   }
 }
 
@@ -120,6 +132,8 @@
 }
 
 .languages__title h3 {
+  font-family: var(--third-family);
+  font-weight: 700;
   font-size: clamp(29px, 3.2vw, 37px);
-  color: #fff;
+  color: var(--white-color);
 }

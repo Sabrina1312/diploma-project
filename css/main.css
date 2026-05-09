@@ -54,7 +54,7 @@ mark {
 
 .link,
 .link-inside {
-  color: #0000fe;
+  color: var(--accent-color);
 }
 
 .link-inside {
@@ -66,7 +66,11 @@ mark {
 }
 
 .link-hover:hover {
-  opacity: 0.7;
+  color: var(--blue-color);
+}
+
+.link-hover.active {
+  color: var(--dark-blue-color);
 }
 
 /* Анимация закрашивания текста, с отслеживанием его появления */
@@ -113,7 +117,7 @@ main {
     width: 375px;
     max-height: 812px;
     height: 100dvh;
-    background: white;
+    background: var(--white-color);
     transition: right 0.3s;
     z-index: 100;
   }
@@ -135,11 +139,19 @@ main {
     font-family: "Hauora", sans-serif;
     font-weight: 400;
     font-size: 24px;
-    color: #171717;
+    color: var(--black-color);
+  }
+
+  .mobile-menu-list li a {
+    transition: all 0.3s ease-in-out;
   }
 
   .mobile-menu-list li a.active {
-    color: #0000fe;
+    color: var(--blue-color);
+  }
+
+  .mobile-menu-list li a:hover {
+    color: var(--accent-color);
   }
 
   .mobile-menu.active {
@@ -178,52 +190,51 @@ main {
 
 .button {
   width: fit-content;
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  line-height: normal;
-  color: #fff;
+  line-height: 1.38;
+  color: var(--white-color);
   padding: 10px 30px;
   border-radius: 25px;
-  background-color: #0000fe;
+  background-color: var(--accent-color);
   transition: background-color 0.3s ease;
-  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #0000ca;
+  background-color: var(--blue-color);
 }
 
 .button:active {
-  background-color: #000c74;
+  background-color: var(--dark-blue-color);
 }
 
 .social-button-blue {
-  fill: #0000fe;
+  fill: var(--accent-color);
   transition: fill 0.3s ease;
   cursor: pointer;
 }
 
 .social-button-blue:hover {
-  fill: #0000ca;
+  fill: var(--blue-color);
 }
 
 .social-button-blue:active {
-  fill: #000c74;
+  fill: var(--dark-blue-color);
 }
 
 .social-button-black {
-  fill: #171717;
+  fill: var(--black-color);
   transition: fill 0.3s ease;
   cursor: pointer;
 }
 
 .social-button-black:hover {
-  fill: #0000fe;
+  fill: var(--accent-color);
 }
 
 .social-button-black:active {
-  fill: #000c74;
+  fill: var(--dark-blue-color);
 }
 
 .button-white {
@@ -232,16 +243,16 @@ main {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #0000fe;
+  color: var(--accent-color);
   padding: 10px 30px;
   border-radius: 25px;
-  background-color: #fff;
+  background-color: var(--white-color);
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 .color-white {
-  color: #fff;
+  color: var(--white-color);
 }
 
 .social-list {
@@ -256,7 +267,7 @@ main {
   right: 40px;
   width: 40px;
   height: 40px;
-  fill: #fff;
+  fill: var(--white-color);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -272,15 +283,15 @@ main {
 }
 
 .button-up:hover {
-  fill: #0000fe;
+  fill: var(--accent-color);
 }
 
 .button-up path {
-  fill: #171717;
+  fill: var(--black-color);
 }
 
 .button-up:hover path {
-  fill: #fff;
+  fill: var(--white-color);
 }
 
 .button-up circle {
@@ -288,7 +299,7 @@ main {
 }
 
 .button-up:hover circle {
-  stroke: #0000fe;
+  stroke: var(--accent-color);
 }
 
 /*===cookie_notice===*/
@@ -305,7 +316,7 @@ main {
   font-weight: 400;
   font-size: 16px;
   line-height: normal;
-  background: #fff;
+  background: var(--white-color);
   position: fixed;
   right: 40px;
   bottom: 25px;

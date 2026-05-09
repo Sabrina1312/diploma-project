@@ -1,6 +1,6 @@
 .reviews {
   width: 100%;
-  background: #171717;
+  background: var(--black-color);
 }
 
 .reviews__wrapper {
@@ -25,7 +25,7 @@
 }
 
 .reviews__wrapper h1 {
-  color: #fff;
+  color: var(--white-color);
   text-align: center;
 }
 
@@ -77,21 +77,21 @@
   justify-content: center;
   font-weight: 600;
   font-size: 24px;
-  color: #fff;
+  color: var(--white-color);
   text-transform: uppercase;
 }
 
 .reviews-name {
   font-weight: 600;
   font-size: 24px;
-  color: #0000fe;
+  color: var(--accent-color);
   text-transform: uppercase;
 }
 
 .reviews-content {
   font-weight: 200;
   font-size: 16px;
-  color: #171717;
+  color: var(--black-color);
   letter-spacing: 0.3px;
 }
 

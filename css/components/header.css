@@ -1,5 +1,6 @@
 .header {
   width: 100%;
+
   position: absolute;
   top: 20px;
   left: 0;
@@ -15,6 +16,9 @@
 .header__logo {
   width: 210px;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #d9d9d9;
 }
 

@@ -239,14 +239,6 @@ select:focus {
   gap: 15px;
 }
 
-.checkbox-group input {
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  flex-shrink: 0;
-  accent-color: #171717;
-}
-
 .checkbox-group label {
   font-size: 0.8rem;
   line-height: 1.4;
@@ -364,4 +356,43 @@ option:hover {
   color: #e74c3c;
   font-size: 12px;
   bottom: -20px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--black-color);
+  color: var(--accent-color);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+input[type="checkbox"]:disabled {
+  border-color: black;
+  background: #dddddd;
+  color: gray;
 }

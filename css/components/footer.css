@@ -1,8 +1,8 @@
 .footer {
   position: relative;
   width: 100%;
-  background: #171717;
-  color: #fff;
+  background: var(--black-color);
+  color: var(--white-color);
 }
 
 .footer__wrapper {

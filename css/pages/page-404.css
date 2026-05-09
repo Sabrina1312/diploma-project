@@ -1,6 +1,6 @@
 .page-404 {
   width: 100%;
-  background: #fff;
+  background: var(--white-color);
 }
 
 .page-404__wrapper {
@@ -13,19 +13,19 @@
 
 .page-404__wrapper h1 {
   font-size: clamp(48px, 13.02vw, 100px);
-  color: #0000fe;
+  color: var(--accent-color);
 }
 
 .page-404__wrapper h2 {
   font-family: "Hauora", sans-serif;
   font-size: clamp(160px, 35.94vw, 270px);
   line-height: 1;
-  color: #0000fe;
+  color: var(--accent-color);
 }
 
 .page-404__wrapper h3 {
   font-size: clamp(29px, 4.82vw, 37px);
-  color: #171717;
+  color: var(--black-color);
   margin-top: 25px;
 }
 
