@@ -288,63 +288,6 @@ option:hover {
   cursor: pointer;
 }
 
-.success-popup__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    visibility 0.5s,
-    opacity 0.5s ease-in-out;
-  background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 20px 0 rgba(110, 110, 110, 0.25);
-  backdrop-filter: blur(4px);
-}
-
-.success-popup_opened {
-  visibility: visible;
-  opacity: 1;
-}
-
-.success-popup__content {
-  position: relative;
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-  animation: popupFadeIn 0.3s ease;
-}
-
-.success-popup__title {
-  font-family: "Hauora", sans-serif;
-  font-weight: 700;
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #0000fe;
-}
-
-.success-popup__text {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  text-align: start;
-  color: #171717;
-}
-
-.success-popup__close {
-  border: none;
-  transition: all 0.2s;
-}
-
 /* Стили для ошибок валидации */
 .error-border {
   border-bottom: 1.5px solid #e74c3c;
