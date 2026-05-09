@@ -2,7 +2,6 @@
   display: grid;
   grid-template-areas: "stack";
   position: relative;
-  height: 100vh;
   background: var(--black-color);
 }
 
@@ -29,47 +28,36 @@
   left: 0;
   right: 0;
   height: 450px;
-  background: linear-gradient(
-    0deg,
-    rgba(23, 23, 23, 0.5) 0%,
-    rgba(23, 23, 23, 0) 100%
-  );
+  background: linear-gradient(360deg, #171717 0%, rgba(23, 23, 23, 0) 100%);
   pointer-events: none;
   z-index: 4;
-}
-
-@media screen and (max-width: 768px) {
-  .hero::before {
-    height: 90px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero::before {
-    height: 110px;
-  }
 }
 
 .hero picture,
 .hero img {
   grid-area: stack;
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 1;
   position: relative;
 }
 
-.hero__content {
+.hero__inner {
+  position: relative;
   grid-area: stack;
-  z-index: 3;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px 70px 40px;
+}
+
+.hero__content {
   display: flex;
   flex-direction: column;
   margin-top: auto;
   align-items: center;
   color: var(--white-color);
-  position: relative;
-  padding: 0 20px 70px 20px;
-  z-index: 5;
 }
 
 .hero__content h1 {
@@ -90,6 +78,24 @@
 
 .hero__button {
   margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero::before {
+    height: 90px;
+  }
+  .hero__inner {
+    padding: 0 20px 90px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero::before {
+    height: 110px;
+  }
+  .hero__inner {
+    padding: 0 16px 45px 16px;
+  }
 }
 
 /*===languages===*/
