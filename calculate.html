@@ -307,13 +307,23 @@
                 <div class="form-groups">
                   <div class="form-group">
                     <div class="group-item">
-                      <input type="radio" id="notaryCert" value="800" />
+                      <input
+                        type="radio"
+                        id="notaryCert"
+                        name="addservices"
+                        value="800"
+                      />
                       <p>Нотариальное заверение</p>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="group-item">
-                      <input type="radio" id="notaryCopy" value="200" />
+                      <input
+                        type="radio"
+                        id="notaryCopy"
+                        name="addservices"
+                        value="200"
+                      />
                       <p>Нотариальная копия перевода</p>
                     </div>
                   </div>
@@ -323,21 +333,32 @@
               <!-- Тариф -->
               <div class="form-items">
                 <h2>Тариф</h2>
+
                 <div class="form-groups">
                   <div class="form-group">
                     <div class="group-item">
-                      <input type="radio" id="nonUrgent" value="0" />
+                      <input
+                        type="radio"
+                        id="nonUrgent"
+                        name="rate"
+                        value="0"
+                      />
                       <p>Несрочный (от 2 рабочих дней)</p>
                     </div>
                     <div class="group-item group-item_type_center">
-                      <input type="radio" id="superUrgent" value="1000" />
+                      <input
+                        type="radio"
+                        id="superUrgent"
+                        name="rate"
+                        value="1000"
+                      />
                       <p>Срочный (на следующий рабочий день)</p>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="group-item">
-                      <input type="radio" id="urgent" value="500" />
+                      <input type="radio" id="urgent" name="rate" value="500" />
                       <p>Сверхсрочный (от 2 часов)</p>
                     </div>
                   </div>

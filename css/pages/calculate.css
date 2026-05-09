@@ -116,7 +116,7 @@ select:open::picker-icon {
   opacity: 1;
 }
 
-::picker(select) {
+#langFrom::picker(select) {
   height: 300px;
   overflow: auto;
   background: var(--white-color);
@@ -205,4 +205,39 @@ input[type="radio"] {
 
 .add-services {
   align-items: center;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 1px solid gray;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  vertical-align: -2px;
+  /* Set here so that Windows' High-Contrast Mode can override */
+  color: green;
+}
+
+input[type="checkbox"]::before {
+  content: "✔";
+  position: absolute;
+  font-size: 1.2em;
+  right: -1px;
+  top: -0.3em;
+  visibility: hidden;
+}
+
+input[type="checkbox"]:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+input[type="checkbox"]:disabled {
+  border-color: black;
+  background: #dddddd;
+  color: gray;
 }
