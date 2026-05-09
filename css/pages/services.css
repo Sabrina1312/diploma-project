@@ -84,6 +84,9 @@
   .hero::before {
     height: 90px;
   }
+  .hero::after {
+    height: 252px;
+  }
   .hero__inner {
     padding: 0 20px 90px 20px;
   }
@@ -92,6 +95,9 @@
 @media screen and (max-width: 480px) {
   .hero::before {
     height: 110px;
+  }
+  .hero::after {
+    height: 170px;
   }
   .hero__inner {
     padding: 0 16px 45px 16px;
