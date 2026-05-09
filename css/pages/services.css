@@ -24,11 +24,11 @@
 .hero::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 13%;
   left: 0;
   right: 0;
   height: 450px;
-  background: linear-gradient(360deg, #171717 0%, rgba(23, 23, 23, 0) 100%);
+  background: linear-gradient(360deg, #171717 60%, rgba(23, 23, 23, 0) 100%);
   pointer-events: none;
   z-index: 4;
 }
@@ -37,7 +37,7 @@
 .hero img {
   grid-area: stack;
   width: 100%;
-  height: 100%;
+  height: auto;
   z-index: 1;
   position: relative;
 }
@@ -78,11 +78,13 @@
   .hero::before {
     height: 90px;
   }
-  .hero::after {
-    height: 252px;
-  }
-  .hero__inner {
+
+  .hero__content {
+    margin-top: 522px;
     padding: 0 20px 90px 20px;
+  }
+  .hero__content h2 {
+    font-size: 36px;
   }
 }
 
@@ -113,12 +115,6 @@
 @media screen and (max-width: 768px) {
   .languages__wrapper {
     padding: 180px 0 140px 0;
-  }
-  .hero__content {
-    padding: 0 20px 0 20px;
-  }
-  .hero__content h2 {
-    font-size: 36px;
   }
 }
 
