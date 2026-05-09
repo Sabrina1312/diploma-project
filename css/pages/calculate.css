@@ -27,10 +27,6 @@
   text-align: center;
 }
 
-.price-display.error {
-  color: red;
-  font-weight: bold;
-}
 .calculate__form {
   margin-top: 50px;
   display: flex;
@@ -44,13 +40,19 @@
   gap: 20px;
 }
 
-.form-items h2 {
+.form-items:last-child {
+  border-top: 1.5px solid var(--black-color);
+}
+
+.form-title {
+  display: flex;
+}
+
+.form-title h2 {
   font-family: var(--third-family);
   font-weight: 700;
   font-size: clamp(29px, 4.8vw, 48px);
   color: var(--black);
-  max-width: 500px;
-  width: 100%;
 }
 
 @media screen and (max-width: 959px) {
@@ -201,43 +203,113 @@ input[type="radio"] {
   accent-color: var(--accent-color);
   width: 20px;
   height: 20px;
+  display: flex;
+  flex-shrink: 0;
 }
 
 .add-services {
   align-items: center;
 }
 
-input[type="checkbox"] {
-  appearance: none;
+.form-result {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
 }
 
-input[type="checkbox"] {
-  position: relative;
-  width: 1em;
-  height: 1em;
-  border: 1px solid gray;
-  /* Adjusts the position of the checkboxes on the text baseline */
-  vertical-align: -2px;
-  /* Set here so that Windows' High-Contrast Mode can override */
-  color: green;
+.form-result h3 {
+  font-family: var(--third-family);
+  font-weight: 700;
+  font-size: clamp(29px, 2.57vw, 37px);
+  color: var(--accent-color);
 }
 
-input[type="checkbox"]::before {
-  content: "✔";
-  position: absolute;
-  font-size: 1.2em;
-  right: -1px;
-  top: -0.3em;
-  visibility: hidden;
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-input[type="checkbox"]:checked::before {
-  /* Use `visibility` instead of `display` to avoid recalculating layout */
-  visibility: visible;
+.price-display {
+  font-family: var(--third-family);
+  font-weight: 700;
+  font-size: 37px;
+  text-align: right;
+  color: var(--black-color);
 }
 
-input[type="checkbox"]:disabled {
-  border-color: black;
-  background: #dddddd;
-  color: gray;
+.price-display.error {
+  color: red;
+  font-weight: bold;
+}
+
+.price-note {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--black-color);
+  margin-top: 20px;
+}
+
+.calculate-button {
+  margin: 30px 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .form-groups {
+    flex-direction: column;
+  }
+  .form-items:first-child .form-groups {
+    flex-direction: row;
+  }
+  .form-items:first-child .form-title {
+    align-items: end;
+  }
+  .result-item {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .form-document {
+    margin-top: 25px;
+  }
+  .wide-group select {
+    margin-top: 30px;
+  }
+  .rate-groups {
+    margin-top: 15px;
+  }
+  .form-result {
+    margin-top: 20px;
+  }
+  .result-item {
+    gap: 10px;
+  }
+}
+@media (max-width: 745px) {
+  .form-items {
+    grid-template-columns: 1fr;
+  }
+  .form-groups,
+  .form-items:first-child .form-groups {
+    flex-direction: column;
+  }
+  .form-group {
+    max-width: 100%;
+  }
+  .form-document {
+    margin-top: 0;
+  }
+  .rate-groups {
+    margin-top: 0;
+  }
+  .group-item.group-item_type_center {
+    margin-top: 20px;
+  }
+  .form-result {
+    margin-top: 0;
+  }
+  .calculate-button {
+    width: 100%;
+  }
 }

@@ -175,7 +175,9 @@
             <h1>РАСЧЕТ СТОИМОСТИ</h1>
             <form class="calculate__form" id="calculatorForm">
               <div class="form-items">
-                <h2>ЯЗЫК</h2>
+                <div class="form-title">
+                  <h2>ЯЗЫК</h2>
+                </div>
                 <div class="form-groups">
                   <div class="form-group form-select">
                     <label>С</label>
@@ -271,12 +273,13 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-items">
-                <h2>
-                  Вид<br />
-                  доку<wbr />мента
-                </h2>
+                <div class="form-title">
+                  <h2>
+                    Вид<br />
+                    доку<wbr />мента
+                  </h2>
+                </div>
                 <div class="form-document">
                   <div class="form-group wide-group form-select">
                     <select id="documentType">
@@ -300,9 +303,10 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-items add-services">
-                <h2>Доп. услуги</h2>
+                <div class="form-title">
+                  <h2>Доп. услуги</h2>
+                </div>
                 <div class="form-groups">
                   <div class="form-group">
                     <div class="group-item">
@@ -311,6 +315,7 @@
                         id="notaryCert"
                         name="addservices"
                         value="800"
+                        checked
                       />
                       <p>Нотариальное заверение</p>
                     </div>
@@ -328,11 +333,11 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-items">
-                <h2>Тариф</h2>
-
-                <div class="form-groups">
+                <div class="form-title">
+                  <h2>Тариф</h2>
+                </div>
+                <div class="form-groups rate-groups">
                   <div class="form-group">
                     <div class="group-item">
                       <input
@@ -340,6 +345,7 @@
                         id="nonUrgent"
                         name="rate"
                         value="0"
+                        checked
                       />
                       <p>Несрочный (от 2 рабочих дней)</p>
                     </div>
@@ -350,7 +356,10 @@
                         name="rate"
                         value="1000"
                       />
-                      <p>Срочный (на следующий рабочий день)</p>
+                      <p>
+                        Срочный (на следующий<br />
+                        рабочий день)
+                      </p>
                     </div>
                   </div>
 
@@ -360,6 +369,23 @@
                       <p>Сверхсрочный (от 2 часов)</p>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="form-items">
+                <div></div>
+                <div class="form-result">
+                  <div class="result-item">
+                    <h3>СТОИМОСТЬ*:</h3>
+                    <div class="price-display" id="priceDisplay">0 РУБ.</div>
+                  </div>
+                  <small class="price-note">
+                    *Итоговая стоимость услуги может отличаться, отправьте
+                    запрос о расчете стоимости, прикрепив документ, и наш
+                    менеджер свяжется с Вами.
+                  </small>
+                  <button type="button" class="button calculate-button">
+                    ОТПРАВИТЬ ЗАПРОС
+                  </button>
                 </div>
               </div>
             </form>
