@@ -115,8 +115,9 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
-input:focus {
-  outline: navajowhite;
+input:focus,
+textarea:focus {
+  outline: none;
 }
 /* Фокус (доступность) */
 :focus {

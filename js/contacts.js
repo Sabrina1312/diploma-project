@@ -54,11 +54,11 @@ document.getElementById("attachSvg").onclick = () =>
 // --- Функция показа попапа ---
 function showSuccessPopup() {
   const popup = document.getElementById("contactsPopup");
-  popup.classList.add("success-popup_opened");
+  popup.classList.add("popup-opened");
 
   // Закрытие по кнопке
   popup.querySelector(".success-popup__close").onclick = () =>
-    popup.classList.remove("success-popup_opened");
+    popup.classList.remove("popup-opened");
 }
 
 // --- Валидация формы ---
