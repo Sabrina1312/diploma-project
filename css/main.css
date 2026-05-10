@@ -209,6 +209,20 @@ main {
   background-color: var(--dark-blue-color);
 }
 
+.button_type_white {
+  background-color: var(--white-color);
+  color: var(--black-color);
+  transition: background-color 0.3s ease;
+}
+
+.button_type_white.active {
+  background-color: var();
+}
+
+.button_type_white:hover {
+  background-color: var();
+}
+
 .social-button-blue {
   fill: var(--accent-color);
   transition: fill 0.3s ease;
