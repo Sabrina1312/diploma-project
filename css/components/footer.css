@@ -111,23 +111,23 @@
 }
 
 .footer__logo {
-  max-width: 325px;
+  max-width: 196px;
   width: 100%;
-  aspect-ratio: 325 / 131;
-  background: #d9d9d9;
+  aspect-ratio: 196 / 131;
+  background: var(--black-color);
 }
 
 @media (max-width: 768px) {
   .footer__logo {
-    max-width: 232px;
-    aspect-ratio: 232 / 93;
+    max-width: 139px;
+    aspect-ratio: 139 / 93;
   }
 }
 
 @media (max-width: 375px) {
   .footer__logo {
-    max-width: 255px;
-    aspect-ratio: 255 / 73;
+    max-width: 225px;
+    aspect-ratio: 225 / 150;
   }
 }
 

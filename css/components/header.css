@@ -14,24 +14,24 @@
 }
 
 .header__logo {
-  width: 210px;
+  width: 134px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #d9d9d9;
+  background: transparent;
 }
 
 @media screen and (max-width: 900px) {
   .header__logo {
-    width: 108px;
+    width: 110px;
     height: 50px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .header__logo {
-    width: 79px;
+    width: 88px;
     height: 40px;
   }
 }
