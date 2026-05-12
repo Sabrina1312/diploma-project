@@ -659,7 +659,7 @@
         </defs>
       </svg>
     </button>
-    <div id="sending" class="success-popup__overlay">
+    <div id="sending" class="success-popup__overlay success-popup_opened">
       <div class="sending">
         <h2>ОТПРАВКА ЗАЯВКИ</h2>
         <form class="sending__form">
@@ -668,19 +668,19 @@
             <div class="contacts__inner">
               <div class="contacts__item">
                 <label for="">ФАМИЛИЯ</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="surname" id="surnameInput" />
               </div>
               <div class="contacts__item">
                 <label for="">ИМЯ</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="name" id="nameInput" />
               </div>
               <div class="contacts__item">
                 <label for="">EMAIL</label>
-                <input type="email" name="" id="" />
+                <input type="email" name="email" id="emailInput" />
               </div>
               <div class="contacts__item">
                 <label for="">НОМЕР ТЕЛЕФОНА</label>
-                <input type="number" name="" id="" />
+                <input type="tel" name="phone" id="phoneInput" />
               </div>
             </div>
           </div>
@@ -912,5 +912,6 @@
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/calculate.js"></script>
+    <script src="./js/utils/phone-mask.js"></script>
   </body>
 </html>

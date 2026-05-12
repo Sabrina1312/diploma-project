@@ -377,6 +377,20 @@ main {
   }
 }
 
+/* Стили для ошибок валидации */
+.error-border {
+  border-bottom: 1.5px solid #e74c3c;
+  outline: none;
+}
+
+.error-message {
+  position: absolute;
+  color: #e74c3c;
+  font-size: 12px;
+  bottom: -20px;
+}
+
+/*===overlay===*/
 .success-popup__overlay {
   position: fixed;
   top: 0;
@@ -397,7 +411,7 @@ main {
   z-index: 101;
 }
 
-.success-popup_opened {
+.success-popup__overlay.success-popup_opened {
   visibility: visible;
   opacity: 1;
 }

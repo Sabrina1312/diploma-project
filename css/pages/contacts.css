@@ -208,19 +208,6 @@ option:hover {
   cursor: pointer;
 }
 
-/* Стили для ошибок валидации */
-.error-border {
-  border-bottom: 1.5px solid #e74c3c;
-  outline: none;
-}
-
-.error-message {
-  position: absolute;
-  color: #e74c3c;
-  font-size: 12px;
-  bottom: -20px;
-}
-
 input[type="checkbox"] {
   appearance: none;
 }
