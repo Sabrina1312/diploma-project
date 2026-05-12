@@ -40,9 +40,95 @@ const Validator = {
 };
 
 // ============================================================
-// МОДУЛЬ 2: РАБОТА С ФАЙЛАМИ
+// МОДУЛЬ 2: РАБОТА С ФАЙЛАМИ (ОСНОВНАЯ ФОРМА)
 // ============================================================
 const FileManager = {
+  attachedFile: null,
+  fileInput: null,
+  displayContainer: null,
+  onFileChangeCallback: null,
+
+  init(fileInputId, displayContainerId) {
+    this.fileInput = document.getElementById(fileInputId);
+    this.displayContainer = document.getElementById(displayContainerId);
+    return this;
+  },
+
+  getFile() {
+    return this.attachedFile;
+  },
+
+  hasFile() {
+    return this.attachedFile !== null;
+  },
+
+  updateDisplay() {
+    if (!this.displayContainer) return;
+
+    if (this.attachedFile) {
+      const fileName = this.attachedFile.name;
+      const fileSize = (this.attachedFile.size / 1024).toFixed(2);
+      this.displayContainer.innerHTML = `
+        <span class="file-info">📎 ${fileName} (${fileSize} КБ)</span>
+        <button type="button" class="remove-file-btn">🗑️</button>
+      `;
+      this.displayContainer.style.display = "flex";
+
+      const removeBtn = this.displayContainer.querySelector(".remove-file-btn");
+      if (removeBtn) {
+        removeBtn.onclick = () => this.removeFile();
+      }
+    } else {
+      this.displayContainer.style.display = "none";
+      this.displayContainer.innerHTML = "";
+    }
+  },
+
+  removeFile() {
+    this.attachedFile = null;
+    if (this.fileInput) this.fileInput.value = "";
+    this.updateDisplay();
+    if (this.onFileChangeCallback) this.onFileChangeCallback(null);
+  },
+
+  clearFile() {
+    this.attachedFile = null;
+    if (this.fileInput) this.fileInput.value = "";
+    if (this.displayContainer) {
+      this.displayContainer.style.display = "none";
+      this.displayContainer.innerHTML = "";
+    }
+  },
+
+  onFileSelected(callback) {
+    this.onFileChangeCallback = callback;
+    if (this.fileInput) {
+      this.fileInput.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          this.attachedFile = file;
+          this.updateDisplay();
+          if (callback) callback(file);
+        }
+      };
+    }
+  },
+
+  onAttachClick(attachElementId) {
+    const attachElement = document.getElementById(attachElementId);
+    if (attachElement && this.fileInput) {
+      attachElement.onclick = (e) => {
+        e.preventDefault();
+        this.fileInput.click();
+      };
+    }
+  },
+};
+
+// ============================================================
+// МОДУЛЬ 2.1: РАБОТА С ФАЙЛАМИ (ПОПАП)
+// ============================================================
+const PopupFileManager = {
   attachedFile: null,
   fileInput: null,
   displayContainer: null,
@@ -184,32 +270,23 @@ const PopupManager = {
 // ============================================================
 // МОДУЛЬ 4: ПРЕЛОАДЕР
 // ============================================================
-const Preloader = {
+const Loader = {
   element: null,
 
-  create() {
-    if (this.element) return this.element;
-
-    this.element = document.createElement("div");
-    this.element.className = "ajax-preloader";
-    this.element.innerHTML = `
-      <div class="preloader-overlay">
-        <div class="preloader-spinner"></div>
-        <p>Отправка данных...</p>
-      </div>
-    `;
-    document.body.appendChild(this.element);
-    return this.element;
+  init() {
+    this.element = document.getElementById("loader");
+    return this;
   },
 
   show() {
-    const preloader = this.create();
-    preloader.style.display = "block";
+    if (this.element) {
+      this.element.classList.add("loader-visible");
+    }
   },
 
   hide() {
     if (this.element) {
-      this.element.style.display = "none";
+      this.element.classList.remove("loader-visible");
     }
   },
 };
@@ -356,10 +433,6 @@ const LanguageManager = {
     return this.toSelect?.value || "";
   },
 
-  setTo(value) {
-    if (this.toSelect) this.toSelect.value = value;
-  },
-
   onFromChange(callback) {
     if (this.fromSelect) {
       this.fromSelect.onchange = () => {
@@ -379,7 +452,7 @@ const LanguageManager = {
 };
 
 // ============================================================
-// МОДУЛЬ 8: УПРАВЛЕНИЕ ЧЕКБОКСАМИ (взаимоисключающие)
+// МОДУЛЬ 8: УПРАВЛЕНИЕ ВЗАИМОИСКЛЮЧАЮЩИМИ ЧЕКБОКСАМИ
 // ============================================================
 const ExclusiveCheckboxes = {
   init(checkbox1, checkbox2, onChangeCallback) {
@@ -387,14 +460,19 @@ const ExclusiveCheckboxes = {
     const cb2 = document.getElementById(checkbox2);
 
     if (cb1 && cb2) {
-      cb1.onchange = () => {
+      const handler1 = () => {
         if (cb1.checked) cb2.checked = false;
         if (onChangeCallback) onChangeCallback();
       };
-      cb2.onchange = () => {
+      const handler2 = () => {
         if (cb2.checked) cb1.checked = false;
         if (onChangeCallback) onChangeCallback();
       };
+
+      cb1.removeEventListener("change", handler1);
+      cb2.removeEventListener("change", handler2);
+      cb1.addEventListener("change", handler1);
+      cb2.addEventListener("change", handler2);
     }
 
     return { cb1, cb2 };
@@ -425,60 +503,73 @@ const ConsentCheckbox = {
   isChecked() {
     return this.checkbox?.checked || false;
   },
-
-  enableButton() {
-    if (this.targetButton) this.targetButton.disabled = false;
-  },
-
-  disableButton() {
-    if (this.targetButton) this.targetButton.disabled = true;
-  },
 };
 
 // ============================================================
-// МОДУЛЬ 10: СИНХРОНИЗАЦИЯ ДАННЫХ
+// МОДУЛЬ 10: СБОР ДАННЫХ КАЛЬКУЛЯТОРА
 // ============================================================
-const DataSync = {
-  mappings: [],
-
-  add(source, target) {
-    this.mappings.push({ source, target });
-    return this;
+const CalculatorData = {
+  getLanguageFrom() {
+    return document.getElementById("langFrom")?.value || "";
   },
 
-  sync() {
-    this.mappings.forEach(({ source, target }) => {
-      if (source.element && target.element) {
-        const value = source.getValue();
-        target.setValue(value);
-      }
-    });
+  getLanguageTo() {
+    return document.getElementById("langTo")?.value || "";
   },
 
-  syncReverse() {
-    this.mappings.forEach(({ source, target }) => {
-      if (source.element && target.element) {
-        const value = target.getValue();
-        source.setValue(value);
-      }
-    });
+  getDocumentType() {
+    return document.getElementById("documentType")?.value || "personal";
   },
-};
 
-// Фабрика для создания источника/цели
-const DataField = {
-  fromElement(element, type = "value") {
+  getPagesCount() {
+    return parseInt(document.getElementById("pagesCount")?.value || 1, 10);
+  },
+
+  getNotaryCert() {
+    return document.getElementById("notaryCert")?.checked || false;
+  },
+
+  getNotaryCopy() {
+    return document.getElementById("notaryCopy")?.checked || false;
+  },
+
+  getTariff() {
+    if (document.getElementById("urgent")?.checked) return "urgent";
+    if (document.getElementById("superUrgent")?.checked) return "superUrgent";
+    return "nonUrgent";
+  },
+
+  isUrgent() {
+    return document.getElementById("urgent")?.checked || false;
+  },
+
+  isSuperUrgent() {
+    return document.getElementById("superUrgent")?.checked || false;
+  },
+
+  getAll() {
     return {
-      element: element,
-      getValue: () => {
-        if (type === "checked") return element.checked;
-        return element.value;
-      },
-      setValue: (value) => {
-        if (type === "checked") element.checked = value;
-        else element.value = value;
-      },
+      languageFrom: this.getLanguageFrom(),
+      languageTo: this.getLanguageTo(),
+      documentType: this.getDocumentType(),
+      pagesCount: this.getPagesCount(),
+      notaryCert: this.getNotaryCert(),
+      notaryCopy: this.getNotaryCopy(),
+      tariff: this.getTariff(),
+      urgent: this.isUrgent(),
+      superUrgent: this.isSuperUrgent(),
     };
+  },
+
+  calculateTotal() {
+    return PriceCalculator.calculate(
+      this.getPagesCount(),
+      this.getDocumentType(),
+      this.getNotaryCert(),
+      this.getNotaryCopy(),
+      this.isUrgent(),
+      this.isSuperUrgent(),
+    );
   },
 };
 
@@ -523,7 +614,7 @@ const UserForm = {
     if (submitBtn) submitBtn.disabled = true;
   },
 
-  clearCalculatorForm() {
+  clearCalculator() {
     const langFrom = document.getElementById("langFrom");
     const langTo = document.getElementById("langTo");
     const documentType = document.getElementById("documentType");
@@ -544,23 +635,9 @@ const UserForm = {
     if (urgent) urgent.checked = false;
     if (superUrgent) superUrgent.checked = false;
 
-    if (
-      typeof LanguageManager !== "undefined" &&
-      LanguageManager.updateToOptions
-    ) {
+    if (LanguageManager.updateToOptions) {
       LanguageManager.updateToOptions();
     }
-
-    const updatePriceEvent = new Event("change");
-    if (langFrom) langFrom.dispatchEvent(updatePriceEvent);
-    if (langTo) langTo.dispatchEvent(updatePriceEvent);
-    if (documentType) documentType.dispatchEvent(updatePriceEvent);
-    if (pagesCount) pagesCount.dispatchEvent(updatePriceEvent);
-  },
-
-  clearAll() {
-    this.clear();
-    this.clearCalculatorForm();
   },
 
   validate() {
@@ -631,121 +708,7 @@ const UserForm = {
 };
 
 // ============================================================
-// МОДУЛЬ 12: ЗАКАЗ (основная бизнес-логика)
-// ============================================================
-const OrderManager = {
-  apiEndpoint: "",
-  callbacks: {
-    onBeforeSubmit: null,
-    onAfterSubmit: null,
-    onSuccess: null,
-    onError: null,
-  },
-
-  config(endpoint) {
-    this.apiEndpoint = endpoint;
-    return this;
-  },
-
-  onBefore(callback) {
-    this.callbacks.onBeforeSubmit = callback;
-    return this;
-  },
-
-  onAfter(callback) {
-    this.callbacks.onAfterSubmit = callback;
-    return this;
-  },
-
-  onSuccess(callback) {
-    this.callbacks.onSuccess = callback;
-    return this;
-  },
-
-  onError(callback) {
-    this.callbacks.onError = callback;
-    return this;
-  },
-
-  collectData(userData, calculatorData, fileInfo) {
-    return {
-      ...userData,
-      ...calculatorData,
-      ...fileInfo,
-      timestamp: new Date().toISOString(),
-    };
-  },
-
-  async submit(userData, calculatorData, fileInfo) {
-    if (this.callbacks.onBeforeSubmit) {
-      const canProceed = this.callbacks.onBeforeSubmit();
-      if (!canProceed) return { success: false, cancelled: true };
-    }
-
-    const formData = this.collectData(userData, calculatorData, fileInfo);
-
-    if (this.callbacks.onAfterSubmit) {
-      this.callbacks.onAfterSubmit(formData);
-    }
-
-    console.log("=== ИМИТАЦИЯ ОТПРАВКИ ДАННЫХ ===");
-    console.log("Отправляемые данные:", formData);
-
-    Preloader.show();
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    Preloader.hide();
-
-    const result = {
-      success: true,
-      data: { message: "Данные успешно отправлены (имитация)" },
-    };
-    console.log("=== ИМИТАЦИЯ ЗАВЕРШЕНА ===");
-
-    if (result.success) {
-      if (this.callbacks.onSuccess) this.callbacks.onSuccess(result.data);
-    } else {
-      if (this.callbacks.onError) this.callbacks.onError(result.error);
-    }
-
-    return result;
-  },
-};
-
-// ============================================================
-// МОДУЛЬ 13: КОЛЛЕКТОР ДАННЫХ КАЛЬКУЛЯТОРА
-// ============================================================
-const CalculatorDataCollector = {
-  elements: {},
-
-  register(key, element) {
-    this.elements[key] = element;
-    return this;
-  },
-
-  getValue(key) {
-    const el = this.elements[key];
-    if (!el) return null;
-    if (el.type === "checkbox" || el.type === "radio") return el.checked;
-    return el.value;
-  },
-
-  getAll() {
-    const data = {};
-    Object.keys(this.elements).forEach((key) => {
-      data[key] = this.getValue(key);
-    });
-    return data;
-  },
-
-  getTariff() {
-    if (this.elements.urgent?.checked) return "urgent";
-    if (this.elements.superUrgent?.checked) return "superUrgent";
-    return "nonUrgent";
-  },
-};
-
-// ============================================================
-// МОДУЛЬ 14: ОТОБРАЖЕНИЕ ЦЕНЫ
+// МОДУЛЬ 12: ОТОБРАЖЕНИЕ ЦЕНЫ
 // ============================================================
 const PriceDisplay = {
   element: null,
@@ -755,127 +718,99 @@ const PriceDisplay = {
     return this;
   },
 
-  update(price) {
+  update() {
     if (this.element) {
-      this.element.textContent = PriceCalculator.formatPrice(price);
-    }
-  },
-
-  reset() {
-    if (this.element) {
-      this.element.textContent = "0 РУБ.";
+      if (!LanguageManager.isValid()) {
+        this.element.textContent = "0 РУБ.";
+        return;
+      }
+      const total = CalculatorData.calculateTotal();
+      this.element.textContent = PriceCalculator.formatPrice(total);
     }
   },
 };
 
 // ============================================================
-// МОДУЛЬ 15: ОЧИСТКА ОСНОВНОЙ ФОРМЫ КАЛЬКУЛЯТОРА
+// МОДУЛЬ 13: ЗАКАЗ (отправка)
 // ============================================================
-const CalculatorForm = {
-  clear() {
-    const langFrom = document.getElementById("langFrom");
-    const langTo = document.getElementById("langTo");
-    const documentType = document.getElementById("documentType");
-    const pagesCount = document.getElementById("pagesCount");
+const OrderManager = {
+  async submit(userData, calculatorData, file) {
+    console.log("=== ОТПРАВКА ДАННЫХ ===");
+    console.log("Данные пользователя:", userData);
+    console.log("Данные калькулятора:", calculatorData);
+    console.log("Файл:", file);
 
-    if (langFrom) langFrom.value = "english";
-    if (langTo) langTo.value = "russian";
-    if (documentType) documentType.value = "personal";
-    if (pagesCount) pagesCount.value = "1";
+    Loader.show();
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    Loader.hide();
 
-    const notaryCert = document.getElementById("notaryCert");
-    const notaryCopy = document.getElementById("notaryCopy");
-    if (notaryCert) notaryCert.checked = false;
-    if (notaryCopy) notaryCopy.checked = false;
+    const orderData = {
+      user: userData,
+      order: {
+        ...calculatorData,
+        totalPrice: PriceCalculator.formatPrice(calculatorData.totalPrice),
+      },
+      file: file
+        ? {
+            name: file.name,
+            size: (file.size / 1024).toFixed(2) + " KB",
+          }
+        : null,
+      timestamp: new Date().toISOString(),
+    };
 
-    const nonUrgent = document.getElementById("nonUrgent");
-    const urgent = document.getElementById("urgent");
-    const superUrgent = document.getElementById("superUrgent");
-    if (nonUrgent) nonUrgent.checked = true;
-    if (urgent) urgent.checked = false;
-    if (superUrgent) superUrgent.checked = false;
+    console.log("Отправляемые данные:", orderData);
+    console.log("=== ОТПРАВКА ЗАВЕРШЕНА ===");
 
-    const updatePriceEvent = new Event("change");
-    if (langFrom) langFrom.dispatchEvent(updatePriceEvent);
-    if (langTo) langTo.dispatchEvent(updatePriceEvent);
-
-    const fileInput = document.getElementById("fileInput");
-    if (fileInput) fileInput.value = "";
+    return { success: true };
   },
 };
 
 // ============================================================
-// ЗАПУСК ПРИЛОЖЕНИЯ (сборка всех модулей)
+// ЗАПУСК ПРИЛОЖЕНИЯ
 // ============================================================
 (function () {
   const startApp = () => {
+    // Инициализация
+    Loader.init();
     LanguageManager.init("langFrom", "langTo");
     LanguageManager.updateToOptions();
-    LanguageManager.onFromChange(() => {
-      const total = PriceCalculator.calculate(
-        parseInt(document.getElementById("pagesCount")?.value || 0, 10),
-        document.getElementById("documentType")?.value || "personal",
-        document.getElementById("notaryCert")?.checked,
-        document.getElementById("notaryCopy")?.checked,
-        document.getElementById("urgent")?.checked,
-        document.getElementById("superUrgent")?.checked,
-      );
-      PriceDisplay.init("priceDisplay").update(total);
-    });
-    LanguageManager.onToChange(() => {
-      const total = PriceCalculator.calculate(
-        parseInt(document.getElementById("pagesCount")?.value || 0, 10),
-        document.getElementById("documentType")?.value || "personal",
-        document.getElementById("notaryCert")?.checked,
-        document.getElementById("notaryCopy")?.checked,
-        document.getElementById("urgent")?.checked,
-        document.getElementById("superUrgent")?.checked,
-      );
-      PriceDisplay.init("priceDisplay").update(total);
-    });
+    PriceDisplay.init("priceDisplay");
 
-    const updatePrice = () => {
-      if (!LanguageManager.isValid()) {
-        PriceDisplay.init("priceDisplay").reset();
-        return;
-      }
+    // Инициализация файлов для основной формы
+    FileManager.init("fileInput", "fileDisplayContainer");
+    FileManager.onAttachClick("attachSvg");
+    FileManager.onFileSelected();
 
-      const pages = parseInt(
-        document.getElementById("pagesCount")?.value || 0,
-        10,
-      );
-      const total = PriceCalculator.calculate(
-        pages,
-        document.getElementById("documentType")?.value || "personal",
-        document.getElementById("notaryCert")?.checked,
-        document.getElementById("notaryCopy")?.checked,
-        document.getElementById("urgent")?.checked,
-        document.getElementById("superUrgent")?.checked,
-      );
-      PriceDisplay.init("priceDisplay").update(total);
-    };
+    // Инициализация файлов для попапа
+    PopupFileManager.init("fileInputPopup", "popupFileDisplayContainer");
+    PopupFileManager.onAttachClick("attachSvgPopup");
+    PopupFileManager.onFileSelected();
 
+    // Взаимоисключающие чекбоксы
+    ExclusiveCheckboxes.init("notaryCert", "notaryCopy", () =>
+      PriceDisplay.update(),
+    );
+    ExclusiveCheckboxes.init("popupNotaryCert", "popupNotaryCopy", null);
+
+    // Функция обновления цены
+    const updatePrice = () => PriceDisplay.update();
+
+    // События для обновления цены
+    LanguageManager.onFromChange(updatePrice);
+    LanguageManager.onToChange(updatePrice);
     document
       .getElementById("documentType")
       ?.addEventListener("change", updatePrice);
     document
       .getElementById("pagesCount")
       ?.addEventListener("input", updatePrice);
-    document
-      .getElementById("notaryCert")
-      ?.addEventListener("change", updatePrice);
-    document
-      .getElementById("notaryCopy")
-      ?.addEventListener("change", updatePrice);
     document.getElementById("urgent")?.addEventListener("change", updatePrice);
     document
       .getElementById("superUrgent")
       ?.addEventListener("change", updatePrice);
 
-    FileManager.init("fileInput", "fileDisplayContainer");
-    FileManager.onAttachClick("attachSvg");
-    FileManager.onFileSelected();
-
+    // Попапы
     PopupManager.register("sending", "sending").register(
       "calculatePopup",
       "calculatePopup",
@@ -886,8 +821,10 @@ const CalculatorForm = {
     PopupManager.closeOnOverlayClick("calculatePopup");
     PopupManager.closeOnButtonClick("calculatePopup", ".success-popup__close");
 
+    // Чекбокс согласия
     ConsentCheckbox.init("privacy", "#sending .sending__burtton");
 
+    // Форма пользователя
     UserForm.init({
       lastName: "surnameInput",
       firstName: "nameInput",
@@ -897,45 +834,7 @@ const CalculatorForm = {
       privacy: "privacy",
     });
 
-    const calculatorData = CalculatorDataCollector.register(
-      "languageFrom",
-      document.getElementById("langFrom"),
-    )
-      .register("languageTo", document.getElementById("langTo"))
-      .register("documentType", document.getElementById("documentType"))
-      .register("pagesCount", document.getElementById("pagesCount"))
-      .register("notaryCert", document.getElementById("notaryCert"))
-      .register("notaryCopy", document.getElementById("notaryCopy"));
-
-    const syncFields = [
-      { from: "langFrom", to: "sendingLang" },
-      { from: "langTo", to: "sendingLangTo" },
-      { from: "documentType", to: "#sending .amendment__column select" },
-      { from: "pagesCount", to: "#sending .amendment__column-other input" },
-      {
-        from: "notaryCert",
-        to: "#sending .amendment__radio:first-child input",
-      },
-      { from: "notaryCopy", to: "#sending .amendment__radio:last-child input" },
-      { from: "nonUrgent", to: "#sending .amendment__radio input[value='0']" },
-      { from: "urgent", to: "#sending .amendment__radio_type_center input" },
-      { from: "superUrgent", to: "#sending .amendment__radio_type_end input" },
-    ];
-
-    const sync = DataSync;
-    syncFields.forEach(({ from, to }) => {
-      const sourceEl = document.getElementById(from);
-      const targetEl =
-        document.getElementById(to) || document.querySelector(to);
-      if (sourceEl && targetEl) {
-        const type = sourceEl.type === "checkbox" ? "checked" : "value";
-        sync.add(
-          DataField.fromElement(sourceEl, type),
-          DataField.fromElement(targetEl, type),
-        );
-      }
-    });
-
+    // Кнопка "Рассчитать"
     document
       .querySelector(".calculate-button")
       ?.addEventListener("click", () => {
@@ -945,54 +844,160 @@ const CalculatorForm = {
           );
           return;
         }
-        sync.sync();
+
+        // Заполняем попап данными из калькулятора
+        document.getElementById("sendingLang").value =
+          CalculatorData.getLanguageFrom();
+        document.getElementById("sendingLangTo").value =
+          CalculatorData.getLanguageTo();
+        document.querySelector("#sending .amendment__column select").value =
+          CalculatorData.getDocumentType();
+        document.querySelector(
+          "#sending .amendment__column-other input",
+        ).value = CalculatorData.getPagesCount();
+
+        // Чекбоксы в попапе
+        const popupNotaryCert = document.getElementById("popupNotaryCert");
+        const popupNotaryCopy = document.getElementById("popupNotaryCopy");
+        if (popupNotaryCert)
+          popupNotaryCert.checked = CalculatorData.getNotaryCert();
+        if (popupNotaryCopy)
+          popupNotaryCopy.checked = CalculatorData.getNotaryCopy();
+
+        // Радио-кнопки в попапе
+        const popupNonUrgent = document.getElementById("popupNonUrgent");
+        const popupUrgent = document.getElementById("popupUrgent");
+        const popupSuperUrgent = document.getElementById("popupSuperUrgent");
+
+        if (CalculatorData.isUrgent()) {
+          if (popupUrgent) popupUrgent.checked = true;
+        } else if (CalculatorData.isSuperUrgent()) {
+          if (popupSuperUrgent) popupSuperUrgent.checked = true;
+        } else {
+          if (popupNonUrgent) popupNonUrgent.checked = true;
+        }
+
+        // Обновляем отображение языка в попапе
+        const popupFrom = document.getElementById("sendingLang");
+        const popupTo = document.getElementById("sendingLangTo");
+        if (popupFrom && popupTo) {
+          if (popupFrom.value === "russian") {
+            Array.from(popupTo.options).forEach((opt) => {
+              opt.style.display = opt.value === "russian" ? "none" : "block";
+            });
+            if (popupTo.value === "russian") popupTo.value = "";
+          } else if (popupFrom.value) {
+            Array.from(popupTo.options).forEach((opt) => {
+              opt.style.display = opt.value === "russian" ? "block" : "none";
+            });
+            popupTo.value = "russian";
+          }
+        }
+
         PopupManager.open("sending");
       });
 
-    OrderManager.config("")
-      .onBefore(() => UserForm.validate())
-      .onSuccess(() => {
-        FileManager.clearFile();
-        UserForm.clear();
-        UserForm.clearCalculatorForm();
-        PopupManager.close("sending");
-        PopupManager.open("calculatePopup");
-        Validator.clearAllErrors();
-      })
-      .onError((error) => {
-        alert(`Ошибка отправки:\n${error}\n\nПожалуйста, попробуйте позже.`);
-      });
-
+    // Отправка формы
     document
       .querySelector("#sending .sending__burtton")
       ?.addEventListener("click", async (e) => {
         e.preventDefault();
 
-        const userData = UserForm.getData();
-        const calculatorFormData = calculatorData.getAll();
+        // Проверяем язык в попапе
+        const popupFrom = document.getElementById("sendingLang")?.value;
+        const popupTo = document.getElementById("sendingLangTo")?.value;
+        if (
+          !popupFrom ||
+          !popupTo ||
+          (popupFrom !== "russian" && popupTo !== "russian") ||
+          popupFrom === popupTo
+        ) {
+          alert(
+            "⚠️ Ошибка: перевод возможен только если один из языков — русский.",
+          );
+          return;
+        }
 
+        // Валидация формы пользователя
+        if (!UserForm.validate()) return;
+
+        // Собираем данные из попапа
         const orderData = {
-          user: userData,
-          calculator: {
-            ...calculatorFormData,
-            tariff: calculatorData.getTariff(),
-            totalPrice: PriceDisplay.element?.textContent || "0 РУБ.",
-          },
-          file: FileManager.hasFile()
-            ? {
-                name: FileManager.getFile()?.name,
-                size: (FileManager.getFile()?.size / 1024).toFixed(2) + " KB",
-              }
-            : null,
+          languageFrom: document.getElementById("sendingLang")?.value || "",
+          languageTo: document.getElementById("sendingLangTo")?.value || "",
+          documentType:
+            document.querySelector("#sending .amendment__column select")
+              ?.value || "personal",
+          pagesCount: parseInt(
+            document.querySelector("#sending .amendment__column-other input")
+              ?.value || 1,
+            10,
+          ),
+          notaryCert:
+            document.getElementById("popupNotaryCert")?.checked || false,
+          notaryCopy:
+            document.getElementById("popupNotaryCopy")?.checked || false,
+          urgent: document.getElementById("popupUrgent")?.checked || false,
+          superUrgent:
+            document.getElementById("popupSuperUrgent")?.checked || false,
         };
 
-        const result = await OrderManager.submit(userData, orderData, {});
+        // Рассчитываем цену
+        orderData.totalPrice = PriceCalculator.calculate(
+          orderData.pagesCount,
+          orderData.documentType,
+          orderData.notaryCert,
+          orderData.notaryCopy,
+          orderData.urgent,
+          orderData.superUrgent,
+        );
 
-        if (!result.success && !result.cancelled) {
-          console.log("Отправка не удалась");
+        if (orderData.urgent) orderData.tariff = "urgent";
+        else if (orderData.superUrgent) orderData.tariff = "superUrgent";
+        else orderData.tariff = "nonUrgent";
+
+        const userData = UserForm.getData();
+        // Берем файл из попапа
+        const file = PopupFileManager.getFile();
+
+        const result = await OrderManager.submit(userData, orderData, file);
+
+        if (result.success) {
+          PopupFileManager.clearFile();
+          FileManager.clearFile();
+          UserForm.clear();
+          UserForm.clearCalculator();
+          PopupManager.close("sending");
+          PopupManager.open("calculatePopup");
+          Validator.clearAllErrors();
+          PriceDisplay.update();
         }
       });
 
+    // Инициализация для попапа (языки)
+    const popupFrom = document.getElementById("sendingLang");
+    const popupTo = document.getElementById("sendingLangTo");
+
+    if (popupFrom && popupTo) {
+      const updatePopupLang = () => {
+        if (popupFrom.value === "russian") {
+          Array.from(popupTo.options).forEach((opt) => {
+            opt.style.display = opt.value === "russian" ? "none" : "block";
+          });
+          if (popupTo.value === "russian") popupTo.value = "";
+        } else if (popupFrom.value) {
+          Array.from(popupTo.options).forEach((opt) => {
+            opt.style.display = opt.value === "russian" ? "block" : "none";
+          });
+          popupTo.value = "russian";
+        }
+      };
+
+      popupFrom.addEventListener("change", updatePopupLang);
+      updatePopupLang();
+    }
+
+    // Первоначальный расчет
     updatePrice();
   };
 
@@ -1004,7 +1009,7 @@ const CalculatorForm = {
 })();
 
 // ============================================================
-// МАСКА ТЕЛЕФОНА (временное решение)
+// МАСКА ТЕЛЕФОНА
 // ============================================================
 (function initPhoneMask() {
   function formatPhone(input) {

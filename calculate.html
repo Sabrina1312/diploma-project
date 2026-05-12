@@ -735,6 +735,7 @@
                   <label>С</label>
                   <select id="sendingLang">
                     <option value="english">Английский</option>
+                    <option value="russian">Русский</option>
                     <option value="azerbaijani">Азербайджанский</option>
                     <option value="arabic">Арабский</option>
                     <option value="armenian">Армянский</option>
@@ -850,21 +851,11 @@
               <h4>ДОП. УСЛУГИ</h4>
               <div class="amendment__grid">
                 <div class="amendment__radio">
-                  <input
-                    type="checkbox"
-                    id="notaryCert"
-                    name="addservices"
-                    value="800"
-                  />
+                  <input type="checkbox" id="popupNotaryCert" />
                   <p>Нотариальное заверение</p>
                 </div>
                 <div class="amendment__radio">
-                  <input
-                    type="checkbox"
-                    id="notaryCopy"
-                    name="addservices"
-                    value="200"
-                  />
+                  <input type="checkbox" id="popupNotaryCopy" />
                   <p>Нотариальная копия перевода</p>
                 </div>
               </div>
@@ -875,28 +866,19 @@
                 <div class="amendment__radio">
                   <input
                     type="radio"
-                    id="nonUrgent"
-                    name="rate"
-                    value="0"
-                    checked=""
+                    id="popupNonUrgent"
+                    name="popupRate"
+                    checked
                   />
                   <p>Несрочный (от 2 рабочих дней)</p>
                 </div>
                 <div class="amendment__radio amendment__radio_type_center">
-                  <input type="radio" id="urgent" name="rate" value="500" />
+                  <input type="radio" id="popupUrgent" name="popupRate" />
                   <p>Сверхсрочный (от 2 часов)</p>
                 </div>
                 <div class="amendment__radio amendment__radio_type_end">
-                  <input
-                    type="radio"
-                    id="superUrgent"
-                    name="rate"
-                    value="1000"
-                  />
-                  <p>
-                    Срочный (на следующий<br />
-                    рабочий день)
-                  </p>
+                  <input type="radio" id="popupSuperUrgent" name="popupRate" />
+                  <p>Срочный (на следующий рабочий день)</p>
                 </div>
               </div>
             </div>

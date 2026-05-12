@@ -621,6 +621,9 @@ input[type="checkbox"]:disabled {
     width: 100%;
     margin: 0;
   }
+  .sending__burtton {
+    margin-top: 35px;
+  }
 }
 @media screen and (max-width: 400px) {
   .calculate__wrapper {
