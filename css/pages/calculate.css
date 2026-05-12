@@ -334,7 +334,9 @@ textarea {
   box-shadow: 0 0 20px 0 rgba(110, 110, 110, 0.25);
   background: var(--white-color);
 }
-
+.sending::-webkit-scrollbar {
+  width: 0;
+}
 .sending h2 {
   font-family: var(--third-family);
   font-weight: 700;
@@ -395,6 +397,7 @@ textarea {
   margin-bottom: 30px;
   position: relative;
 }
+
 .amendment__item h4 {
   font-family: var(--font-family);
   font-weight: 600;
