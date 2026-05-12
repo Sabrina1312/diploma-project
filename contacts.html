@@ -47,6 +47,10 @@
     <!-- Стили -->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/pages/contacts.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -187,10 +191,13 @@
       <section class="contacts">
         <div class="container">
           <div class="contacts__wrapper">
-            <h1>КОНТАКТЫ</h1>
+            <h1 class="wow animate__animated animate__zoomIn">КОНТАКТЫ</h1>
             <div class="contacts__location">
               <div class="contacts__content">
-                <ul class="contacts__title">
+                <ul
+                  class="contacts__title wow animate__animated animate__zoomIn"
+                  data-wow-delay="0.6s"
+                >
                   <li>
                     <h2>Офис на Сенной площади:</h2>
                   </li>
@@ -201,7 +208,10 @@
                     </p>
                   </li>
                 </ul>
-                <ul class="contacts__title">
+                <ul
+                  class="contacts__title wow animate__animated animate__zoomIn"
+                  data-wow-delay="0.4s"
+                >
                   <li>
                     <h2>Офис на Ленинском проспекте:</h2>
                   </li>
@@ -287,7 +297,9 @@
               </div>
             </div>
             <div class="contacts__blank">
-              <p class="contacts__desc">
+              <p
+                class="contacts__desc wow animate__animated animate__bounceInUp"
+              >
                 Мы всегда на связи и готовы ответить на ваши вопросы
                 и&nbsp;проконсультировать насчет стоимости перевода.<br />Вы
                 можете написать нам по email, позвонить или оставить заявку
@@ -297,31 +309,46 @@
                 <!-- Сетка 2 колонки -->
                 <div class="form-grid" id="reviews-form">
                   <!-- ФАМИЛИЯ -->
-                  <div class="field-group">
+                  <div
+                    class="field-group wow animate__animated animate__lightSpeedInLeft"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="lastname">ФАМИЛИЯ</label>
                     <input type="text" id="lastname" name="lastname" />
                   </div>
 
                   <!-- ИМЯ -->
-                  <div class="field-group">
+                  <div
+                    class="field-group wow animate__animated animate__lightSpeedInLeft"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="firstname">ИМЯ</label>
                     <input type="text" id="firstname" name="firstname" />
                   </div>
 
                   <!-- EMAIL -->
-                  <div class="field-group">
+                  <div
+                    class="field-group wow animate__animated animate__lightSpeedInRight"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="email">EMAIL</label>
                     <input type="email" id="email" name="email" />
                   </div>
 
                   <!-- НОМЕР ТЕЛЕФОНА -->
-                  <div class="field-group">
+                  <div
+                    class="field-group wow animate__animated animate__lightSpeedInRight"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="phone">НОМЕР ТЕЛЕФОНА</label>
                     <input type="tel" id="phone" name="phone" />
                   </div>
 
                   <!-- ТЕМА (полноширинная) -->
-                  <div class="field-group full-width">
+                  <div
+                    class="field-group full-width wow animate__animated animate__lightSpeedInLeft"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="subject">ТЕМА</label>
                     <select id="subject" name="subject">
                       <option value="" disabled selected></option>
@@ -335,7 +362,10 @@
                   </div>
 
                   <!-- СООБЩЕНИЕ (полноширинное) -->
-                  <div class="field-group full-width">
+                  <div
+                    class="field-group full-width wow animate__animated animate__lightSpeedInRight"
+                    data-wow-delay="0.2s"
+                  >
                     <label for="message">СООБЩЕНИЕ</label>
                     <textarea id="message" name="message"></textarea>
                     <svg
@@ -362,7 +392,9 @@
                 </div>
 
                 <!-- Блок с согласием (чекбокс) -->
-                <div class="checkbox-group full-width">
+                <div
+                  class="checkbox-group full-width wow animate__animated animate__backInLeft"
+                >
                   <input
                     type="checkbox"
                     id="privacy"
@@ -383,7 +415,7 @@
 
                 <button
                   type="submit"
-                  class="button submit-btn contacts__button"
+                  class="button submit-btn contacts__button wow animate__animated animate__backInLeft"
                   disabled
                 >
                   ОТПРАВИТЬ
@@ -659,6 +691,10 @@
       </div>
     </div>
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
+    <script src="./js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/utils/phone-mask.js"></script>

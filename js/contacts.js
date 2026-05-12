@@ -224,3 +224,30 @@
     init();
   }
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mapIframe = document.querySelector(".map iframe");
+  const mapContainer = document.querySelector(".map");
+
+  // Скрываем iframe до появления
+  mapIframe.style.opacity = "0";
+  mapIframe.style.transition = "opacity 0.5s ease";
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Устанавливаем реальный src из data-src
+          if (!mapIframe.src && mapIframe.dataset.src) {
+            mapIframe.src = mapIframe.dataset.src;
+          }
+          mapIframe.style.opacity = "1";
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  observer.observe(mapContainer);
+});
