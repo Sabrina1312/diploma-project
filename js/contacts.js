@@ -229,24 +229,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapIframe = document.querySelector(".map iframe");
   const mapContainer = document.querySelector(".map");
 
-  // Скрываем iframe до появления
-  mapIframe.style.opacity = "0";
-  mapIframe.style.transition = "opacity 0.5s ease";
+  if (mapIframe && mapIframe.dataset.src) {
+    // Добавляем фоновый цвет контейнеру
+    mapContainer.style.backgroundColor = "#f0f0f0";
+    mapContainer.style.minHeight = "250px";
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!mapIframe.src && mapIframe.dataset.src) {
-            mapIframe.src = mapIframe.dataset.src;
-          }
-          mapIframe.style.opacity = "1";
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.3 },
-  );
-
-  observer.observe(mapContainer);
+    // Загружаем карту с небольшой задержкой после рендеринга
+    requestIdleCallback(() => {
+      mapIframe.src = mapIframe.dataset.src;
+      mapIframe.onload = () => {
+        mapContainer.style.backgroundColor = "transparent";
+      };
+    });
+  }
 });
