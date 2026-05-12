@@ -197,9 +197,8 @@
                   <div class="form-group form-select">
                     <label>С</label>
                     <select id="langFrom">
-                      <option value=""></option>
-                      <option value="russian">Русский</option>
                       <option value="english">Английский</option>
+                      <option value="russian">Русский</option>
                       <option value="azerbaijani">Азербайджанский</option>
                       <option value="arabic">Арабский</option>
                       <option value="armenian">Армянский</option>
@@ -244,7 +243,6 @@
                   <div class="form-group form-select">
                     <label>На</label>
                     <select id="langTo">
-                      <option value=""></option>
                       <option value="russian">Русский</option>
                       <option value="english">Английский</option>
                       <option value="azerbaijani">Азербайджанский</option>
@@ -661,7 +659,7 @@
         </defs>
       </svg>
     </button>
-    <poup id="sending" class="success-popup__overlay">
+    <div id="sending" class="success-popup__overlay">
       <div class="sending">
         <h2>ОТПРАВКА ЗАЯВКИ</h2>
         <form class="sending__form">
@@ -811,17 +809,16 @@
               <div class="amendment__grid">
                 <div class="amendment__radio">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="notaryCert"
                     name="addservices"
                     value="800"
-                    checked=""
                   />
                   <p>Нотариальное заверение</p>
                 </div>
                 <div class="amendment__radio">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="notaryCopy"
                     name="addservices"
                     value="200"
@@ -900,8 +897,8 @@
           </button>
         </form>
       </div>
-    </poup>
-    <poup id="calculatePopup" class="success-popup__overlay">
+    </div>
+    <div id="calculatePopup" class="success-popup__overlay">
       <div class="success-popup__content">
         <h2 class="success-popup__title">УСПЕШНО</h2>
         <p class="success-popup__text">
@@ -910,7 +907,7 @@
         </p>
         <button class="button success-popup__close">ХОРОШО</button>
       </div>
-    </poup>
+    </div>
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>
