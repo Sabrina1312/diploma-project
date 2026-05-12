@@ -24,6 +24,7 @@
 }
 
 .contacts__location {
+  max-width: 1360px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -83,6 +84,7 @@
   color: var(--white-color);
 }
 .map {
+  max-width: 650px;
   width: 100%;
   aspect-ratio: 1 / 1;
   border: 0;

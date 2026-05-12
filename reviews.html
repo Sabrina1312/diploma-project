@@ -48,6 +48,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -72,13 +76,13 @@
           <nav>
             <ul class="header__nav color-white">
               <li>
-                <a class="link-hover" href="services.html">УСЛУГИ</a>
+                <a href="services.html">УСЛУГИ</a>
               </li>
               <li>
-                <a class="link-hover" href="about.html">О НАС</a>
+                <a href="about.html">О НАС</a>
               </li>
               <li>
-                <a class="link-hover" href="#">ОТЗЫВЫ</a>
+                <a href="#">ОТЗЫВЫ</a>
               </li>
               <li>
                 <a class="button header__button" href="contacts.html"
@@ -185,7 +189,7 @@
     <main>
       <section class="reviews">
         <div class="reviews__wrapper">
-          <h1>ОТЗЫВЫ</h1>
+          <h1 class="wow animate__animated animate__zoomIn">ОТЗЫВЫ</h1>
           <div class="swiper reviews__swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
@@ -284,7 +288,7 @@
             </div>
           </div>
           <a
-            class="button button_type_white reviews__button"
+            class="button button_type_white reviews__button wow animate__animated animate__zoomIn"
             href="contacts.html#reviews-form"
             >ОСТАВИТЬ ОТЗЫВ</a
           >
@@ -546,6 +550,10 @@
       </svg>
     </button>
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
+    <script src="./js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
     <script src="./js/cookie-manager.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js"></script>

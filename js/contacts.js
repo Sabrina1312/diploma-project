@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Устанавливаем реальный src из data-src
           if (!mapIframe.src && mapIframe.dataset.src) {
             mapIframe.src = mapIframe.dataset.src;
           }
