@@ -44,6 +44,10 @@
     <!-- Стили -->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/pages/services.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -68,13 +72,13 @@
           <nav>
             <ul class="header__nav color-white">
               <li>
-                <a class="link-hover" href="#">УСЛУГИ</a>
+                <a href="#">УСЛУГИ</a>
               </li>
               <li>
-                <a class="link-hover" href="about.html">О НАС</a>
+                <a href="about.html">О НАС</a>
               </li>
               <li>
-                <a class="link-hover" href="reviews.html">ОТЗЫВЫ</a>
+                <a href="reviews.html">ОТЗЫВЫ</a>
               </li>
               <li>
                 <a class="button header__button" href="contacts.html"
@@ -193,9 +197,16 @@
         </picture>
 
         <div class="hero__content">
-          <h1>Говорим на&nbsp;одном<wbr /> языке</h1>
-          <h2>профессиональный перевод с&nbsp;более 40 языков мира</h2>
-          <a class="button hero__button" href="calculate.html"
+          <h1 class="wow animate__animated animate__fadeInLeftBig">
+            Говорим на&nbsp;одном<wbr /> языке
+          </h1>
+          <h2 class="wow animate__animated animate__fadeInRightBig">
+            профессиональный перевод с&nbsp;более 40 языков мира
+          </h2>
+          <a
+            class="button hero__button wow animate__animated animate__zoomIn"
+            data-wow-delay="0.2s"
+            href="calculate.html"
             >РАССЧИТАТЬ СТОИМОСТЬ</a
           >
         </div>
@@ -203,7 +214,12 @@
       <section class="services">
         <div class="services__wrapper">
           <div class="services__inner">
-            <h3>ЯЗЫКИ</h3>
+            <h3
+              class="wow animate__animated animate__zoomIn"
+              data-wow-delay="0.2s"
+            >
+              ЯЗЫКИ
+            </h3>
             <div class="table-wrapper">
               <table class="custom-table">
                 <thead>
@@ -291,10 +307,29 @@
                       </div>
                     </td>
                     <td>
-                      <h5>от 800 руб.</h5>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.2s"
+                      >
+                        от 800 руб.
+                      </h5>
                     </td>
-                    <td><h5>от 1 000 руб.</h5></td>
-                    <td><h5>от 1 300 руб.</h5></td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.3s"
+                      >
+                        от 1 000 руб.
+                      </h5>
+                    </td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.4s"
+                      >
+                        от 1 300 руб.
+                      </h5>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -372,9 +407,30 @@
                         </ul>
                       </div>
                     </td>
-                    <td><h5>от 1 000 руб.</h5></td>
-                    <td><h5>от 1 200 руб.</h5></td>
-                    <td><h5>от 1 300 руб.</h5></td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.2s"
+                      >
+                        от 1 000 руб.
+                      </h5>
+                    </td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.3s"
+                      >
+                        от 1 200 руб.
+                      </h5>
+                    </td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.4s"
+                      >
+                        от 1 300 руб.
+                      </h5>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -421,17 +477,46 @@
                         </ul>
                       </div>
                     </td>
-                    <td><h5>от 1 000 руб.</h5></td>
-                    <td><h5>от 1 200 руб.</h5></td>
-                    <td><h5>от 1 400 руб.</h5></td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.2s"
+                      >
+                        от 1 000 руб.
+                      </h5>
+                    </td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.3s"
+                      >
+                        от 1 200 руб.
+                      </h5>
+                    </td>
+                    <td>
+                      <h5
+                        class="wow animate__animated animate__zoomIn"
+                        data-wow-delay="0.4s"
+                      >
+                        от 1 400 руб.
+                      </h5>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="services__bottom-row">
-            <h3>ДРУГОЕ</h3>
-            <div class="services__other">
+            <h3
+              class="wow animate__animated animate__zoomIn"
+              data-wow-delay="0.2s"
+            >
+              ДРУГОЕ
+            </h3>
+            <div
+              class="services__other wow animate__animated animate__fadeInRightBig"
+              data-wow-delay="0.2s"
+            >
               <div class="services__other-item">
                 <p>Перевод штампа апостиль</p>
                 <span>600 руб.</span>
@@ -708,6 +793,10 @@
       </svg>
     </button>
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
+    <script src="./js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/services.js"></script>
