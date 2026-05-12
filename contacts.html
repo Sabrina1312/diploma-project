@@ -207,7 +207,7 @@
                   </li>
                   <li>
                     <p>
-                      г. Санкт-Петербург, Ленинский <nobr>пр-т</nobr>, 129,
+                      г. Санкт-Петербург, Ленинский <nobr>пр-т</nobr>, д. 129,
                       корп. 6
                     </p>
                   </li>
@@ -217,7 +217,9 @@
                     <li><a href="tel:+79045551125">+7 904 555 11 25</a></li>
                     <li><a href="tel:+79062529595">+7 906 252 95 95</a></li>
                   </ul>
-                  <a href="mailto:perevodmira@mail.ru">perevodmira@mail.ru</a>
+                  <a class="contacts__mail" href="mailto:perevodmira@mail.ru"
+                    >perevodmira@mail.ru</a
+                  >
                 </div>
                 <ul class="social-list">
                   <li>
@@ -284,14 +286,14 @@
                 ></iframe>
               </div>
             </div>
-            <div class="contacts__form">
+            <div class="contacts__blank">
               <p class="contacts__desc">
-                Мы всегда на связи и готовы ответить на ваши вопросы и
-                проконсультировать насчет стоимости перевода.<br />Вы можете
-                написать нам по email, позвонить или оставить заявку через форму
-                обратной связи.
+                Мы всегда на связи и готовы ответить на ваши вопросы
+                и&nbsp;проконсультировать насчет стоимости перевода.<br />Вы
+                можете написать нам по email, позвонить или оставить заявку
+                через форму обратной связи.
               </p>
-              <form action="#" method="post">
+              <form class="contacts__form" action="#" method="post">
                 <!-- Сетка 2 колонки -->
                 <div class="form-grid" id="reviews-form">
                   <!-- ФАМИЛИЯ -->
@@ -355,10 +357,7 @@
                 </div>
 
                 <!-- Блок с согласием (чекбокс) -->
-                <div
-                  class="checkbox-group full-width"
-                  style="margin-top: 0.5rem"
-                >
+                <div class="checkbox-group full-width">
                   <input
                     type="checkbox"
                     id="privacy"
@@ -367,7 +366,7 @@
                   />
                   <label for="privacy">
                     Я принимаю условия:
-                    <a href="privacy-policy.html"
+                    <a class="link-underline" href="privacy-policy.html"
                       >Политики конфликт-ивальности</a
                     >
                     и даю согласие на обработку моих персональных данных, а
@@ -376,11 +375,10 @@
                 </div>
 
                 <!-- Кнопка отправки -->
-                <div class="full-width" style="margin-top: 1.8rem">
-                  <button type="submit" class="button submit-btn">
-                    ОТПРАВИТЬ
-                  </button>
-                </div>
+
+                <button type="submit" class="button contacts__button">
+                  ОТПРАВИТЬ
+                </button>
               </form>
             </div>
           </div>

@@ -54,7 +54,8 @@ mark {
 }
 
 .link,
-.link-inside {
+.link-inside,
+.link-underline {
   color: var(--accent-color);
 }
 
@@ -62,8 +63,13 @@ mark {
   font-weight: 800;
 }
 
-.link-hover {
+.link-hover,
+.link-underline {
   transition: all 0.3s ease-in-out;
+}
+
+.link-underline:hover {
+  text-decoration: underline;
 }
 
 .link-hover:hover {
