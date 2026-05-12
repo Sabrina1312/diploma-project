@@ -791,6 +791,7 @@ details[open] .accordion-content {
 /*===support-banner===*/
 .support-banner {
   width: 100%;
+  background: var(--white-color);
 }
 
 .support-banner__wrapper {

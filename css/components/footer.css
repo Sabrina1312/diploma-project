@@ -155,12 +155,12 @@
 
 @media (max-width: 767px) {
   .footer__list-phone {
-    margin-right: 40px;
+    margin-right: 50px;
   }
 }
 
 .footer__mail {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .footer__list li {
