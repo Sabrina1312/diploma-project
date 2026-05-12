@@ -197,6 +197,8 @@
                   <div class="form-group form-select">
                     <label>С</label>
                     <select id="langFrom">
+                      <option value=""></option>
+                      <option value="russian">Русский</option>
                       <option value="english">Английский</option>
                       <option value="azerbaijani">Азербайджанский</option>
                       <option value="arabic">Арабский</option>
@@ -239,10 +241,10 @@
                       <option value="estonian">Эстонский</option>
                     </select>
                   </div>
-
                   <div class="form-group form-select">
                     <label>На</label>
                     <select id="langTo">
+                      <option value=""></option>
                       <option value="russian">Русский</option>
                       <option value="english">Английский</option>
                       <option value="azerbaijani">Азербайджанский</option>
@@ -311,10 +313,9 @@
                       <option value="other">Другое (+200 руб)</option>
                     </select>
                   </div>
-                  <!-- Количество страниц -->
                   <div class="form-group wide-group form-select">
                     <h3>КОЛ-ВО СТРАНИЦ (ЕСЛИ ВИД ДОКУМЕНТА – ДРУГОЕ)</h3>
-                    <input type="number" id="pagesCount" min="1" value="" />
+                    <input type="number" id="pagesCount" min="1" value="1" />
                   </div>
                 </div>
               </div>
@@ -326,11 +327,10 @@
                   <div class="form-group">
                     <div class="group-item">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="notaryCert"
-                        name="addservices"
+                        name="assurance"
                         value="800"
-                        checked
                       />
                       <p>Нотариальное заверение</p>
                     </div>
@@ -338,9 +338,9 @@
                   <div class="form-group">
                     <div class="group-item">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="notaryCopy"
-                        name="addservices"
+                        name="copytransfer"
                         value="200"
                       />
                       <p>Нотариальная копия перевода</p>
@@ -365,22 +365,21 @@
                       <p>Несрочный (от 2 рабочих дней)</p>
                     </div>
                     <div class="group-item group-item_type_center">
-                      <input
-                        type="radio"
-                        id="superUrgent"
-                        name="rate"
-                        value="1000"
-                      />
+                      <input type="radio" id="urgent" name="rate" value="500" />
                       <p>
                         Срочный (на следующий<br />
                         рабочий день)
                       </p>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <div class="group-item">
-                      <input type="radio" id="urgent" name="rate" value="500" />
+                      <input
+                        type="radio"
+                        id="superUrgent"
+                        name="rate"
+                        value="1000"
+                      />
                       <p>Сверхсрочный (от 2 часов)</p>
                     </div>
                   </div>
