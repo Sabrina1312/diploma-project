@@ -38,15 +38,17 @@ if (closeButton) {
 //Функция закрашивания текста, с отслеживанием его появления
 document.addEventListener("DOMContentLoaded", () => {
   const spanElements = document.querySelectorAll(".highlight-span");
+  const DELAY_MS = 1000;
 
   if (spanElements.length === 0) return;
 
-  // Создаём один observer для всех элементов
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, DELAY_MS);
           observer.unobserve(entry.target);
         }
       });
@@ -56,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   );
 
-  // Наблюдаем за каждым найденным элементом
   spanElements.forEach((element) => {
     observer.observe(element);
   });

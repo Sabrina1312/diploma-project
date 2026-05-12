@@ -44,6 +44,10 @@
     <!-- Стили -->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/pages/about.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -184,9 +188,12 @@
       <section class="about">
         <div class="container">
           <div class="about__wrapper">
-            <h1>О НАС</h1>
+            <h1 class="wow animate__animated animate__zoomIn">О НАС</h1>
             <div class="about__grid">
-              <div class="about__file">
+              <div
+                class="about__file wow animate__animated animate__zoomIn animate__slow"
+                data-wow-delay="0.2s"
+              >
                 <h4>
                   Мы – команда профессионалов, объединённых общей целью:
                   <span class="highlight-span"
@@ -195,28 +202,46 @@
                 </h4>
               </div>
               <div class="about__content">
-                <h2>МЫ ГАРАНТИРУЕМ:</h2>
-                <div class="about__subtitle">
+                <h2
+                  class="wow animate__animated animate__lightSpeedInRight"
+                  data-wow-delay="0.6s"
+                >
+                  МЫ ГАРАНТИРУЕМ:
+                </h2>
+                <div
+                  class="about__subtitle wow animate__animated animate__zoomIn"
+                  data-wow-delay="0.8s"
+                >
                   <h3>Полную конфиденциальность ваших данных</h3>
                 </div>
-                <div class="about__subtitle">
+                <div
+                  class="about__subtitle wow animate__animated animate__zoomIn"
+                  data-wow-delay="1s"
+                >
                   <h3>
                     Соблюдение оговоренных сроков (даже при срочном заказе)
                   </h3>
                 </div>
-                <div class="about__subtitle">
+                <div
+                  class="about__subtitle wow animate__animated animate__zoomIn"
+                  data-wow-delay="1.2s"
+                >
                   <h3>
                     Правильное оформление по стандартам государственных органов
                     РФ
                   </h3>
                 </div>
                 <div class="about__inner">
-                  <div class="about__item">
+                  <div
+                    class="about__item wow animate__animated animate__zoomInLeft"
+                  >
                     <h4>БОЛЕЕ</h4>
                     <span>10</span>
                     <h4>лет опыта</h4>
                   </div>
-                  <div class="about__item">
+                  <div
+                    class="about__item wow animate__animated animate__zoomInRight"
+                  >
                     <h4>БОЛЕЕ</h4>
                     <span>15K</span>
                     <h4>ДОВОЛЬНЫХ КЛИЕНТОВ</h4>
@@ -505,6 +530,10 @@
         </defs>
       </svg>
     </button>
+    <script src="./js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>

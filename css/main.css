@@ -93,11 +93,13 @@ mark {
 }
 
 .highlight-span.visible {
+  color: var(--white-color);
   background-size: 100% 100%;
 }
 
 main {
   flex: 1;
+  overflow-x: hidden;
 }
 
 .container {
@@ -548,7 +550,7 @@ main {
   font-weight: 700;
   font-size: 36px;
   margin-bottom: 20px;
-  color: #0000fe;
+  color: var(--accent-color);
 }
 
 .success-popup__text {
@@ -556,7 +558,7 @@ main {
   line-height: 1.5;
   margin-bottom: 20px;
   text-align: start;
-  color: #171717;
+  color: var(--black-color);
 }
 
 .success-popup__close {

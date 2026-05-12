@@ -126,6 +126,7 @@
 }
 
 .foundling {
+  font-family: var(--font-family);
   font-size: clamp(20px, 4.2vw, 36px);
   font-weight: 500;
   color: var(--black-color);
@@ -134,7 +135,6 @@
 
 .foundling span {
   font-weight: 600;
-  color: var(--white-color);
   padding: 0 10px;
 }
 
