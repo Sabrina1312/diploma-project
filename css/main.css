@@ -562,3 +562,18 @@ main {
   border: none;
   transition: all 0.2s;
 }
+.submit-btn {
+  margin-left: auto;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.submit-btn:enabled {
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}

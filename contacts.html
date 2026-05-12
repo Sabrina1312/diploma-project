@@ -354,6 +354,11 @@
                     </svg>
                     <input type="file" id="fileInput" style="display: none" />
                   </div>
+                  <div
+                    id="fileDisplayContainer"
+                    class="file-display-container"
+                    style="display: none"
+                  ></div>
                 </div>
 
                 <!-- Блок с согласием (чекбокс) -->
@@ -376,7 +381,11 @@
 
                 <!-- Кнопка отправки -->
 
-                <button type="submit" class="button contacts__button">
+                <button
+                  type="submit"
+                  class="button submit-btn contacts__button"
+                  disabled
+                >
                   ОТПРАВИТЬ
                 </button>
               </form>
@@ -652,6 +661,8 @@
     <button id="resetCookiesBtn" style="display: none">Настройки cookie</button>
     <script src="./js/cookie-manager.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/utils/phone-mask.js"></script>
+    <script src="./js/modules.js"></script>
     <script src="./js/contacts.js"></script>
   </body>
 </html>

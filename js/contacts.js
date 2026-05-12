@@ -1,236 +1,226 @@
-const mapSection = document.querySelector(".map");
-let mapLoaded = false;
+// ============================================================
+// СТРАНИЦА КОНТАКТОВ
+// ============================================================
 
-function loadMap() {
-  if (mapLoaded) return;
+(function () {
+  // ============================================================
+  // 1. ПОЛУЧЕНИЕ ЭЛЕМЕНТОВ ФОРМЫ
+  // ============================================================
+  const form = document.querySelector(".contacts__form");
+  const submitButton = document.querySelector(".contacts__button");
 
-  const iframe = mapSection.querySelector("iframe");
-  const src = iframe.getAttribute("data-src");
-  if (src) {
-    iframe.src = src;
-    iframe.removeAttribute("data-src");
-    mapLoaded = true;
-  }
-}
+  // ============================================================
+  // 2. НАСТРОЙКА ФАЙЛОВ
+  // ============================================================
+  FileManager.init("fileInput", "fileDisplayContainer");
+  FileManager.onAttachClick("attachSvg");
+  FileManager.onFileSelected();
 
-// Загружаем при скролле
-const mapObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        loadMap();
-        mapObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1 },
-);
+  // ============================================================
+  // 3. НАСТРОЙКА ПОПАПА
+  // ============================================================
+  PopupManager.register("contactsPopup", "contactsPopup");
+  PopupManager.closeOnOverlayClick("contactsPopup");
+  PopupManager.closeOnButtonClick("contactsPopup", ".success-popup__close");
+  PopupManager.close("contactsPopup");
 
-mapObserver.observe(mapSection);
+  // ============================================================
+  // 4. НАСТРОЙКА КНОПКИ ОТПРАВКИ (через ConsentCheckbox)
+  // ============================================================
+  ConsentCheckbox.init("privacy", ".contacts__button");
 
-// Дополнительно: загружаем через 3 секунды после загрузки страницы
-setTimeout(() => {
-  if (
-    !mapLoaded &&
-    window.scrollY + window.innerHeight > mapSection.offsetTop - 500
-  ) {
-    loadMap();
-  }
-}, 3000);
+  // ============================================================
+  // 5. НАСТРОЙКА МАСКИ ТЕЛЕФОНА
+  // ============================================================
+  PhoneMask.init();
 
-document.getElementById("attachSvg").onclick = () =>
-  document.getElementById("fileInput").click();
+  // ============================================================
+  // 6. ВАЛИДАЦИЯ ФОРМЫ
+  // ============================================================
+  function validateContactsForm() {
+    let isValid = true;
+    Validator.clearAllErrors();
 
-document.getElementById("privacy").addEventListener("change", (e) => {
-  document.querySelector(".submit-btn").disabled = !e.target.checked;
-});
+    const lastname = document.getElementById("lastname");
+    const firstname = document.getElementById("firstname");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
 
-// Делаем кнопку неактивной
-document.querySelector(".submit-btn").disabled = true;
-
-document.getElementById("attachSvg").onclick = () =>
-  document.getElementById("fileInput").click();
-
-// --- Функция показа попапа ---
-function showSuccessPopup() {
-  const popup = document.getElementById("contactsPopup");
-  popup.classList.add("popup-opened");
-
-  // Закрытие по кнопке
-  popup.querySelector(".success-popup__close").onclick = () =>
-    popup.classList.remove("popup-opened");
-}
-
-// --- Валидация формы ---
-function validateForm(form) {
-  let isValid = true;
-  const fields = {
-    lastname: "Фамилия",
-    firstname: "Имя",
-    email: "Email",
-    phone: "Номер телефона",
-    subject: "Тема",
-    message: "Сообщение",
-  };
-
-  // Убираем старые ошибки
-  form.querySelectorAll(".error-message").forEach((el) => el.remove());
-  form
-    .querySelectorAll(".error-border")
-    .forEach((el) => el.classList.remove("error-border"));
-
-  // Проверка каждого поля
-  for (const [id, label] of Object.entries(fields)) {
-    const field = document.getElementById(id);
-    if (!field) continue;
-
-    let value = field.value.trim();
-
-    // Пропускаем, если поле необязательное
-    if (id === "subject" && value === "") {
-      value = ""; // пустое значение для select
+    // Фамилия
+    if (!lastname?.value.trim()) {
+      isValid = false;
+      Validator.showError(lastname, 'Пожалуйста, заполните поле "Фамилия"');
     }
 
-    if (value === "") {
+    // Имя
+    if (!firstname?.value.trim()) {
       isValid = false;
-      showError(field, `Пожалуйста, заполните поле "${label}"`);
-    } else if (id === "email" && !validateEmail(value)) {
+      Validator.showError(firstname, 'Пожалуйста, заполните поле "Имя"');
+    }
+
+    // Email
+    const emailValue = email?.value.trim() || "";
+    if (!emailValue) {
       isValid = false;
-      showError(field, "Введите корректный email (например, name@domain.com)");
-    } else if (id === "phone" && !validatePhone(value)) {
+      Validator.showError(email, 'Пожалуйста, заполните поле "Email"');
+    } else if (!Validator.email(emailValue)) {
       isValid = false;
-      showError(
-        field,
-        "Введите корректный номер телефона (например, +7 123 456-78-90)",
+      Validator.showError(email, "Введите корректный email");
+    }
+
+    // Телефон
+    const phoneValue = phone?.value.trim() || "";
+    if (!phoneValue) {
+      isValid = false;
+      Validator.showError(phone, 'Пожалуйста, заполните поле "Номер телефона"');
+    } else if (!Validator.phone(phoneValue)) {
+      isValid = false;
+      Validator.showError(
+        phone,
+        "Введите корректный номер телефона (10-11 цифр)",
       );
     }
+
+    // Тема
+    if (!subject?.value) {
+      isValid = false;
+      Validator.showError(subject, "Пожалуйста, выберите тему обращения");
+    }
+
+    // Сообщение
+    if (!message?.value.trim()) {
+      isValid = false;
+      Validator.showError(message, 'Пожалуйста, заполните поле "Сообщение"');
+    }
+
+    return isValid;
   }
 
-  return isValid;
-}
-
-function showError(field, message) {
-  field.classList.add("error-border");
-  const error = document.createElement("div");
-  error.className = "error-message";
-  error.style.color = "#e74c3c";
-  error.style.fontSize = "12px";
-  error.style.marginTop = "4px";
-  error.innerText = message;
-  field.parentNode.appendChild(error);
-}
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-  return re.test(email);
-}
-
-function validatePhone(phone) {
-  const re = /^[\d\s\+\-\(\)]{10,20}$/;
-  return re.test(phone);
-}
-
-// --- Обработка чекбокса и кнопки ---
-const privacyCheckbox = document.getElementById("privacy");
-const submitBtn = document.querySelector(".submit-btn");
-
-function updateButtonState() {
-  submitBtn.disabled = !privacyCheckbox.checked;
-}
-
-privacyCheckbox.addEventListener("change", updateButtonState);
-updateButtonState(); // начальное состояние
-
-// --- Обработка отправки формы ---
-const form = document.querySelector(".contacts__form form");
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  // Валидация перед отправкой
-  if (!validateForm(form)) {
-    return;
+  // ============================================================
+  // 7. СБОР ДАННЫХ
+  // ============================================================
+  function collectFormData() {
+    return {
+      lastname: document.getElementById("lastname")?.value.trim() || "",
+      firstname: document.getElementById("firstname")?.value.trim() || "",
+      email: document.getElementById("email")?.value.trim() || "",
+      phone: document.getElementById("phone")?.value.trim() || "",
+      subject: document.getElementById("subject")?.value || "",
+      message: document.getElementById("message")?.value.trim() || "",
+      privacy: document.getElementById("privacy")?.checked || false,
+      fileName: FileManager.hasFile() ? FileManager.getFile()?.name : null,
+      fileSize: FileManager.hasFile()
+        ? (FileManager.getFile()?.size / 1024).toFixed(2) + " KB"
+        : null,
+      timestamp: new Date().toISOString(),
+      page: "contacts",
+    };
   }
 
-  // Проверка чекбокса (на всякий случай)
-  if (!privacyCheckbox.checked) {
-    alert("Пожалуйста, примите условия Политики конфиденциальности");
-    return;
-  }
-
-  // Блокируем кнопку на время отправки, чтобы не было двойного клика
-  submitBtn.disabled = true;
-  submitBtn.textContent = "ОТПРАВКА...";
-
-  try {
-    // --- ИМИТАЦИЯ ОТПРАВКИ НА СЕРВЕР ---
-    // Отправка на сервер. Когда бэкенд будет готов.
-    /*
-    const formData = new FormData(form);
-    const response = await fetch('/обработчик', {
-      method: 'POST',
-      body: formData
+  // ============================================================
+  // 8. ОЧИСТКА ФОРМЫ
+  // ============================================================
+  function clearForm() {
+    const fields = [
+      "lastname",
+      "firstname",
+      "email",
+      "phone",
+      "subject",
+      "message",
+    ];
+    fields.forEach((id) => {
+      const field = document.getElementById(id);
+      if (field) field.value = "";
     });
 
-    if (!response.ok) {
-      throw new Error('Ошибка сети');
+    // Сбрасываем чекбокс
+    const privacy = document.getElementById("privacy");
+    if (privacy) privacy.checked = false;
+
+    // Очищаем файл
+    FileManager.clearFile();
+
+    // Очищаем ошибки
+    Validator.clearAllErrors();
+
+    // Кнопка станет неактивной через ConsentCheckbox (чекбокс снят)
+  }
+
+  // ============================================================
+  // 9. ОТПРАВКА ДАННЫХ (ИМИТАЦИЯ)
+  // ============================================================
+  async function sendData(formData) {
+    console.log("=== ИМИТАЦИЯ ОТПРАВКИ КОНТАКТЫ ===");
+    console.log("Данные:", formData);
+
+    Preloader.show();
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    Preloader.hide();
+
+    return { success: true };
+  }
+
+  // ============================================================
+  // 10. ОСНОВНАЯ ФУНКЦИЯ
+  // ============================================================
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!validateContactsForm()) return;
+
+    const formData = collectFormData();
+    const result = await sendData(formData);
+
+    if (result.success) {
+      clearForm();
+      PopupManager.open("contactsPopup");
+    } else {
+      alert("Ошибка отправки. Попробуйте позже.");
     }
-    */
-
-    // Имитация задержки сервера
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // --- УСПЕШНАЯ ОТПРАВКА ---
-    showSuccessPopup();
-    form.reset();
-    updateButtonState();
-  } catch (error) {
-    console.error("Ошибка:", error);
-    alert("Произошла ошибка при отправке. Попробуйте позже.");
-  } finally {
-    submitBtn.disabled = !privacyCheckbox.checked;
-    submitBtn.textContent = "ОТПРАВИТЬ";
-  }
-});
-
-// Функция для форматирования номера телефона
-function formatPhoneNumber(input) {
-  let numbers = input.value.replace(/\D/g, "");
-
-  numbers = numbers.slice(0, 11);
-
-  let formattedNumber = "";
-
-  if (numbers.length > 0) {
-    formattedNumber = "+7";
   }
 
-  if (numbers.length > 1) {
-    formattedNumber += "(" + numbers.substring(1, 4);
+  // ============================================================
+  // 11. ЖИВАЯ ВАЛИДАЦИЯ
+  // ============================================================
+  function setupLiveValidation() {
+    const emailField = document.getElementById("email");
+    const phoneField = document.getElementById("phone");
+
+    emailField?.addEventListener("blur", () => {
+      const email = emailField.value.trim();
+      if (email && !Validator.email(email)) {
+        Validator.showError(emailField, "Введите корректный email");
+      } else {
+        Validator.removeError(emailField);
+      }
+    });
+
+    phoneField?.addEventListener("blur", () => {
+      const phone = phoneField.value.trim();
+      if (phone && !Validator.phone(phone)) {
+        Validator.showError(phoneField, "Введите корректный номер");
+      } else {
+        Validator.removeError(phoneField);
+      }
+    });
   }
 
-  if (numbers.length > 4) {
-    formattedNumber += ") " + numbers.substring(4, 7);
+  // ============================================================
+  // 12. ИНИЦИАЛИЗАЦИЯ
+  // ============================================================
+  function init() {
+    if (form) form.addEventListener("submit", handleSubmit);
+    setupLiveValidation();
+    // Маска телефона уже инициализирована в пункте 5
+    // PhoneMask.init() уже вызван выше
   }
 
-  if (numbers.length > 7) {
-    formattedNumber += " " + numbers.substring(7, 9);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
-
-  if (numbers.length > 9) {
-    formattedNumber += " " + numbers.substring(9, 11);
-  }
-
-  input.value = formattedNumber;
-}
-
-const phoneInputs = document.querySelectorAll('input[type="tel"]');
-
-phoneInputs.forEach((input) => {
-  input.addEventListener("input", function () {
-    formatPhoneNumber(this);
-  });
-
-  input.addEventListener("focusout", function () {
-    formatPhoneNumber(this);
-  });
-});
+})();

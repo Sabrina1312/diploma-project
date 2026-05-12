@@ -436,6 +436,62 @@ const ConsentCheckbox = {
   },
 };
 
+// МОДУЛЬ 9.5: МАСКА ТЕЛЕФОНА (НОВЫЙ!)
+// ============================================================
+const PhoneMask = {
+  format(input) {
+    if (!input) return;
+
+    let numbers = input.value.replace(/\D/g, "");
+    numbers = numbers.slice(0, 11);
+
+    let formattedNumber = "";
+
+    if (numbers.length > 0) {
+      formattedNumber = "+7";
+    }
+
+    if (numbers.length > 1) {
+      formattedNumber += "(" + numbers.substring(1, 4);
+    }
+
+    if (numbers.length > 4) {
+      formattedNumber += ") " + numbers.substring(4, 7);
+    }
+
+    if (numbers.length > 7) {
+      formattedNumber += "-" + numbers.substring(7, 9);
+    }
+
+    if (numbers.length > 9) {
+      formattedNumber += "-" + numbers.substring(9, 11);
+    }
+
+    input.value = formattedNumber;
+  },
+
+  applyToInput(input) {
+    if (!input) return;
+
+    const handler = () => this.format(input);
+    input.addEventListener("input", handler);
+    input.addEventListener("focusout", handler);
+    this.format(input);
+  },
+
+  init(selector = 'input[type="tel"]') {
+    const phoneInputs = document.querySelectorAll(selector);
+    phoneInputs.forEach((input) => this.applyToInput(input));
+  },
+
+  observe() {
+    const observer = new MutationObserver(() => {
+      this.init();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  },
+};
+
 // ============================================================
 // МОДУЛЬ 10: СИНХРОНИЗАЦИЯ ДАННЫХ
 // ============================================================
