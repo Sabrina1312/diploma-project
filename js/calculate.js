@@ -219,7 +219,6 @@ const Preloader = {
 // ============================================================
 const HttpClient = {
   async post(url, data, headers = {}) {
-    // Если URL пустой, не отправляем
     if (!url) {
       console.warn("Отправка отключена: endpoint не настроен");
       return { success: false, error: "Endpoint не настроен" };
@@ -436,62 +435,6 @@ const ConsentCheckbox = {
   },
 };
 
-// МОДУЛЬ 9.5: МАСКА ТЕЛЕФОНА (НОВЫЙ!)
-// ============================================================
-const PhoneMask = {
-  format(input) {
-    if (!input) return;
-
-    let numbers = input.value.replace(/\D/g, "");
-    numbers = numbers.slice(0, 11);
-
-    let formattedNumber = "";
-
-    if (numbers.length > 0) {
-      formattedNumber = "+7";
-    }
-
-    if (numbers.length > 1) {
-      formattedNumber += "(" + numbers.substring(1, 4);
-    }
-
-    if (numbers.length > 4) {
-      formattedNumber += ") " + numbers.substring(4, 7);
-    }
-
-    if (numbers.length > 7) {
-      formattedNumber += "-" + numbers.substring(7, 9);
-    }
-
-    if (numbers.length > 9) {
-      formattedNumber += "-" + numbers.substring(9, 11);
-    }
-
-    input.value = formattedNumber;
-  },
-
-  applyToInput(input) {
-    if (!input) return;
-
-    const handler = () => this.format(input);
-    input.addEventListener("input", handler);
-    input.addEventListener("focusout", handler);
-    this.format(input);
-  },
-
-  init(selector = 'input[type="tel"]') {
-    const phoneInputs = document.querySelectorAll(selector);
-    phoneInputs.forEach((input) => this.applyToInput(input));
-  },
-
-  observe() {
-    const observer = new MutationObserver(() => {
-      this.init();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  },
-};
-
 // ============================================================
 // МОДУЛЬ 10: СИНХРОНИЗАЦИЯ ДАННЫХ
 // ============================================================
@@ -568,7 +511,6 @@ const UserForm = {
     };
   },
 
-  // Очистка только полей в попапе
   clear() {
     if (this.fields.lastName) this.fields.lastName.value = "";
     if (this.fields.firstName) this.fields.firstName.value = "";
@@ -577,12 +519,10 @@ const UserForm = {
     if (this.fields.message) this.fields.message.value = "";
     if (this.fields.privacy) this.fields.privacy.checked = false;
 
-    // Деактивируем кнопку отправки
     const submitBtn = document.querySelector("#sending .sending__burtton");
     if (submitBtn) submitBtn.disabled = true;
   },
 
-  // Очистка основной формы калькулятора
   clearCalculatorForm() {
     const langFrom = document.getElementById("langFrom");
     const langTo = document.getElementById("langTo");
@@ -604,7 +544,6 @@ const UserForm = {
     if (urgent) urgent.checked = false;
     if (superUrgent) superUrgent.checked = false;
 
-    // Обновляем LanguageManager
     if (
       typeof LanguageManager !== "undefined" &&
       LanguageManager.updateToOptions
@@ -612,7 +551,6 @@ const UserForm = {
       LanguageManager.updateToOptions();
     }
 
-    // Обновляем цену
     const updatePriceEvent = new Event("change");
     if (langFrom) langFrom.dispatchEvent(updatePriceEvent);
     if (langTo) langTo.dispatchEvent(updatePriceEvent);
@@ -620,7 +558,6 @@ const UserForm = {
     if (pagesCount) pagesCount.dispatchEvent(updatePriceEvent);
   },
 
-  // Полная очистка (и попап, и калькулятор)
   clearAll() {
     this.clear();
     this.clearCalculatorForm();
@@ -751,37 +688,18 @@ const OrderManager = {
       this.callbacks.onAfterSubmit(formData);
     }
 
-    // ============================================================
-    // РЕАЛЬНАЯ ОТПРАВКА ЗАКОММЕНТИРОВАНА
-    // ДЛЯ ТЕСТИРОВАНИЯ ИСПОЛЬЗУЕТСЯ ИМИТАЦИЯ
-    // ============================================================
-
-    /* ===== РЕАЛЬНАЯ ОТПРАВКА (РАСКОММЕНТИРОВАТЬ ПОСЛЕ НАСТРОЙКИ СЕРВЕРА) =====
-    Preloader.show();
-    const result = await HttpClient.post(this.apiEndpoint, formData);
-    Preloader.hide();
-    ===== КОНЕЦ РЕАЛЬНОЙ ОТПРАВКИ ===== */
-
-    // ===== ИМИТАЦИЯ ОТПРАВКИ (ДЛЯ ТЕСТИРОВАНИЯ) =====
     console.log("=== ИМИТАЦИЯ ОТПРАВКИ ДАННЫХ ===");
     console.log("Отправляемые данные:", formData);
 
-    // Показываем прелоадер
     Preloader.show();
-
-    // Имитация задержки сервера
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    // Скрываем прелоадер
     Preloader.hide();
 
-    // Имитация успешного ответа
     const result = {
       success: true,
       data: { message: "Данные успешно отправлены (имитация)" },
     };
     console.log("=== ИМИТАЦИЯ ЗАВЕРШЕНА ===");
-    // ===== КОНЕЦ ИМИТАЦИИ =====
 
     if (result.success) {
       if (this.callbacks.onSuccess) this.callbacks.onSuccess(result.data);
@@ -855,7 +773,6 @@ const PriceDisplay = {
 // ============================================================
 const CalculatorForm = {
   clear() {
-    // Сбрасываем селекты на значения по умолчанию
     const langFrom = document.getElementById("langFrom");
     const langTo = document.getElementById("langTo");
     const documentType = document.getElementById("documentType");
@@ -866,13 +783,11 @@ const CalculatorForm = {
     if (documentType) documentType.value = "personal";
     if (pagesCount) pagesCount.value = "1";
 
-    // Снимаем чекбоксы
     const notaryCert = document.getElementById("notaryCert");
     const notaryCopy = document.getElementById("notaryCopy");
     if (notaryCert) notaryCert.checked = false;
     if (notaryCopy) notaryCopy.checked = false;
 
-    // Сбрасываем радио-кнопки
     const nonUrgent = document.getElementById("nonUrgent");
     const urgent = document.getElementById("urgent");
     const superUrgent = document.getElementById("superUrgent");
@@ -880,12 +795,10 @@ const CalculatorForm = {
     if (urgent) urgent.checked = false;
     if (superUrgent) superUrgent.checked = false;
 
-    // Обновляем отображение цены
     const updatePriceEvent = new Event("change");
     if (langFrom) langFrom.dispatchEvent(updatePriceEvent);
     if (langTo) langTo.dispatchEvent(updatePriceEvent);
 
-    // Очищаем прикреплённый файл в основной форме (если есть)
     const fileInput = document.getElementById("fileInput");
     if (fileInput) fileInput.value = "";
   },
@@ -895,9 +808,7 @@ const CalculatorForm = {
 // ЗАПУСК ПРИЛОЖЕНИЯ (сборка всех модулей)
 // ============================================================
 (function () {
-  // Ждём загрузку DOM
   const startApp = () => {
-    // 1. Настройка языков
     LanguageManager.init("langFrom", "langTo");
     LanguageManager.updateToOptions();
     LanguageManager.onFromChange(() => {
@@ -923,7 +834,6 @@ const CalculatorForm = {
       PriceDisplay.init("priceDisplay").update(total);
     });
 
-    // 2. Настройка калькулятора цены
     const updatePrice = () => {
       if (!LanguageManager.isValid()) {
         PriceDisplay.init("priceDisplay").reset();
@@ -945,7 +855,6 @@ const CalculatorForm = {
       PriceDisplay.init("priceDisplay").update(total);
     };
 
-    // Навешиваем события на калькулятор
     document
       .getElementById("documentType")
       ?.addEventListener("change", updatePrice);
@@ -963,12 +872,10 @@ const CalculatorForm = {
       .getElementById("superUrgent")
       ?.addEventListener("change", updatePrice);
 
-    // 3. Настройка файлов
     FileManager.init("fileInput", "fileDisplayContainer");
     FileManager.onAttachClick("attachSvg");
     FileManager.onFileSelected();
 
-    // 4. Настройка попапов
     PopupManager.register("sending", "sending").register(
       "calculatePopup",
       "calculatePopup",
@@ -979,10 +886,8 @@ const CalculatorForm = {
     PopupManager.closeOnOverlayClick("calculatePopup");
     PopupManager.closeOnButtonClick("calculatePopup", ".success-popup__close");
 
-    // 5. Настройка согласия
     ConsentCheckbox.init("privacy", "#sending .sending__burtton");
 
-    // 6. Настройка формы пользователя
     UserForm.init({
       lastName: "surnameInput",
       firstName: "nameInput",
@@ -992,7 +897,6 @@ const CalculatorForm = {
       privacy: "privacy",
     });
 
-    // 7. Настройка коллектора данных калькулятора
     const calculatorData = CalculatorDataCollector.register(
       "languageFrom",
       document.getElementById("langFrom"),
@@ -1003,7 +907,6 @@ const CalculatorForm = {
       .register("notaryCert", document.getElementById("notaryCert"))
       .register("notaryCopy", document.getElementById("notaryCopy"));
 
-    // 8. Настройка синхронизации данных с попапом
     const syncFields = [
       { from: "langFrom", to: "sendingLang" },
       { from: "langTo", to: "sendingLangTo" },
@@ -1033,7 +936,6 @@ const CalculatorForm = {
       }
     });
 
-    // 9. Кнопка отправки в основном калькуляторе
     document
       .querySelector(".calculate-button")
       ?.addEventListener("click", () => {
@@ -1047,13 +949,12 @@ const CalculatorForm = {
         PopupManager.open("sending");
       });
 
-    // 10. Настройка отправки заказа (используется имитация)
     OrderManager.config("")
       .onBefore(() => UserForm.validate())
       .onSuccess(() => {
         FileManager.clearFile();
-        UserForm.clear(); // Очищаем поля в попапе
-        UserForm.clearCalculatorForm(); // Очищаем основную форму калькулятора
+        UserForm.clear();
+        UserForm.clearCalculatorForm();
         PopupManager.close("sending");
         PopupManager.open("calculatePopup");
         Validator.clearAllErrors();
@@ -1062,7 +963,6 @@ const CalculatorForm = {
         alert(`Ошибка отправки:\n${error}\n\nПожалуйста, попробуйте позже.`);
       });
 
-    // 11. Кнопка отправки в попапе
     document
       .querySelector("#sending .sending__burtton")
       ?.addEventListener("click", async (e) => {
@@ -1086,7 +986,6 @@ const CalculatorForm = {
             : null,
         };
 
-        // Отправка с имитацией
         const result = await OrderManager.submit(userData, orderData, {});
 
         if (!result.success && !result.cancelled) {
@@ -1094,7 +993,6 @@ const CalculatorForm = {
         }
       });
 
-    // Первоначальный расчёт цены
     updatePrice();
   };
 
@@ -1103,4 +1001,29 @@ const CalculatorForm = {
   } else {
     startApp();
   }
+})();
+
+// ============================================================
+// МАСКА ТЕЛЕФОНА (временное решение)
+// ============================================================
+(function initPhoneMask() {
+  function formatPhone(input) {
+    if (!input) return;
+    let numbers = input.value.replace(/\D/g, "");
+    numbers = numbers.slice(0, 11);
+    let formatted = "";
+    if (numbers.length > 0) formatted = "+7";
+    if (numbers.length > 1) formatted += "(" + numbers.substring(1, 4);
+    if (numbers.length > 4) formatted += ") " + numbers.substring(4, 7);
+    if (numbers.length > 7) formatted += "-" + numbers.substring(7, 9);
+    if (numbers.length > 9) formatted += "-" + numbers.substring(9, 11);
+    input.value = formatted;
+  }
+
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach((input) => {
+    input.addEventListener("input", () => formatPhone(input));
+    input.addEventListener("focusout", () => formatPhone(input));
+    formatPhone(input);
+  });
 })();
