@@ -270,10 +270,17 @@ main {
   padding: 10px 30px;
   border-radius: 25px;
   background-color: var(--white-color);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-out;
   cursor: pointer;
 }
-
+.button-white:hover {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+}
+.button-white:active {
+  color: var(--white-color);
+  background-color: var(--dark-blue-color);
+}
 .color-white {
   color: var(--white-color);
 }
