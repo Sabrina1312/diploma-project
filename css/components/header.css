@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-
   position: absolute;
   top: 20px;
   left: 0;
@@ -45,11 +44,11 @@
   display: flex;
   align-items: center;
   gap: 77px;
-  color: #000;
+  color: var(--black-color);
 }
 
 .header__nav li {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
 }
@@ -57,8 +56,8 @@
 .header__button {
   padding: 10px 30px;
   border-radius: 25px;
-  color: #fff;
-  background-color: #0000fe;
+  color: var(--white-color);
+  background-color: var(--accent-color);
 }
 
 .header__burger {

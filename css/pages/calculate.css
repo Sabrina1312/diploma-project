@@ -63,7 +63,7 @@
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
-  color: var(--black);
+  color: var(--black-color);
 }
 select,
 ::picker(select) {
@@ -489,9 +489,9 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"]:disabled {
-  border-color: black;
+  border-color: var(--black-color);
   background: #dddddd;
-  color: gray;
+  color: var(--gray-color);
 }
 .sending__burtton {
   margin-top: 50px;

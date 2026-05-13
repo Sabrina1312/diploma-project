@@ -17,7 +17,7 @@
 }
 
 .page-404__wrapper h2 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-size: clamp(160px, 35.94vw, 270px);
   line-height: 1;
   color: var(--accent-color);

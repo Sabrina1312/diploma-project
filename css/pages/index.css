@@ -32,7 +32,7 @@
 
 .special-text {
   width: fit-content;
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: normal;
   font-size: clamp(60px, 13.3vw, 192px);
   line-height: 100%;
@@ -50,7 +50,7 @@
 
 .main-text {
   width: fit-content;
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: clamp(60px, 16.5vw, 240px);
   line-height: 1.2;
@@ -68,7 +68,7 @@
 
 .special-text-down {
   width: fit-content;
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 400;
   font-size: clamp(56px, 21vw, 305px);
   line-height: 0.6;
@@ -81,7 +81,7 @@
 
 .main-text-down {
   width: fit-content;
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 600;
   font-size: clamp(60px, 13.2vw, 192px);
   line-height: 100%;
@@ -143,7 +143,7 @@
 }
 
 .hero__item h3 {
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 600;
   font-size: 50px;
   line-height: 1.2;
@@ -176,7 +176,7 @@
 }
 
 .hero__item h4 {
-  font-family: "WADIK", sans-serif;
+  font-family: var(--third-family);
   font-weight: 600;
   font-size: 60px;
   line-height: 1.2;
@@ -209,7 +209,7 @@
 }
 
 .hero__item p {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -231,7 +231,7 @@
 }
 
 .hero__item p a {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-size: 16px;
   font-weight: 700;
   color: var(--accent-color);
@@ -402,7 +402,7 @@
 }
 
 .service-card h4 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 800;
   font-size: 24px;
   text-transform: uppercase;
@@ -631,7 +631,7 @@
 }
 
 .advantages__item-title span {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: clamp(18px, 4.1667vw, 32px);
   color: var(--gray-color);
@@ -644,7 +644,7 @@
 }
 
 .advantages__item-title h4 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 800;
   font-size: clamp(24px, 4.6875vw, 36px);
   color: var(--black-color);
@@ -656,7 +656,7 @@
 }
 
 .advantages__item-content p {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.3;
@@ -696,7 +696,7 @@
 .accordion {
   max-width: 1015px;
   width: 100%;
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   color: var(--black-color);
   margin: 50px 0 0 auto;
 }

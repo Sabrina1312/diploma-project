@@ -1,6 +1,6 @@
 .about {
   width: 100%;
-  background: #fff;
+  background: var(--white-color);
 }
 
 .about__wrapper {
@@ -11,7 +11,7 @@
 
 .about__wrapper h1 {
   text-transform: uppercase;
-  color: #0000fe;
+  color: var(--accent-color);
   text-align: center;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .about__file h4 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: clamp(24px, 4.8vw, 36px);
   text-transform: uppercase;
@@ -68,7 +68,7 @@
 }
 
 .about__subtitle h3 {
-  font-family: "Hauora", sans-serif;
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 20px;
   color: var(--black-color);

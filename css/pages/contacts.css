@@ -106,7 +106,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #666;
+  color: var(--gray-color);
   font-size: 14px;
 }
 .contacts__blank {
@@ -208,7 +208,7 @@ select:focus {
   pointer-events: auto;
 }
 option:hover {
-  background-color: #dedede;
+  background-color: var(--light-grey-color);
 }
 
 .button-clip {
