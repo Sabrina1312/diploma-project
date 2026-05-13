@@ -1,3 +1,4 @@
+//Функция меняющая image в бегущей строке, в зависимости от ширины экрана
 function updateScrollImages() {
   // Определяем ширину экрана
   const width = window.innerWidth;
