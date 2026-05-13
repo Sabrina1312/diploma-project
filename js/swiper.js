@@ -3,10 +3,7 @@ const swiper = new Swiper(".reviews__swiper", {
   loop: false,
   slidesPerView: 3,
   spaceBetween: 20,
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-  },
+
   breakpoints: {
     320: {
       slidesPerView: 1.05,
@@ -32,15 +29,5 @@ const swiper = new Swiper(".reviews__swiper", {
       slidesPerView: 3.08,
       spaceBetween: 20,
     },
-  },
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: ".swiper-scrollbar",
   },
 });
