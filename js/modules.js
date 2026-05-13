@@ -186,32 +186,23 @@ const PopupManager = {
 // ============================================================
 // МОДУЛЬ 4: ПРЕЛОАДЕР
 // ============================================================
-const Preloader = {
+const Loader = {
   element: null,
 
-  create() {
-    if (this.element) return this.element;
-
-    this.element = document.createElement("div");
-    this.element.className = "ajax-preloader";
-    this.element.innerHTML = `
-      <div class="preloader-overlay">
-        <div class="preloader-spinner"></div>
-        <p>Отправка данных...</p>
-      </div>
-    `;
-    document.body.appendChild(this.element);
-    return this.element;
+  init() {
+    this.element = document.getElementById("loader");
+    return this;
   },
 
   show() {
-    const preloader = this.create();
-    preloader.style.display = "block";
+    if (this.element) {
+      this.element.classList.add("loader-visible");
+    }
   },
 
   hide() {
     if (this.element) {
-      this.element.style.display = "none";
+      this.element.classList.remove("loader-visible");
     }
   },
 };

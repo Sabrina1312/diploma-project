@@ -35,6 +35,10 @@
   PhoneMask.init();
 
   // ============================================================
+  // 5.5 ПРЕЛОАДЕР
+  // ============================================================
+  Loader.init();
+  // ============================================================
   // 6. ВАЛИДАЦИЯ ФОРМЫ
   // ============================================================
   function validateContactsForm() {
@@ -156,9 +160,9 @@
     console.log("=== ИМИТАЦИЯ ОТПРАВКИ КОНТАКТЫ ===");
     console.log("Данные:", formData);
 
-    Preloader.show();
+    Loader.show();
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    Preloader.hide();
+    Loader.hide();
 
     return { success: true };
   }

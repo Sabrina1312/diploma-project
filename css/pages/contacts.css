@@ -1,3 +1,5 @@
+@import url("../components/loader.css");
+
 .contacts {
   width: 100%;
   background: var(--white-color);

@@ -434,66 +434,6 @@ main {
   transform: scale(1.1);
 }
 
-/* --- Прелоадер --- */
-.ajax-preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  display: none;
-}
-
-.preloader-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.preloader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #0f3b2c;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.preloader-overlay p {
-  color: white;
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-/* --- Анимации --- */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .button-clip {
   cursor: pointer;
   position: absolute;
