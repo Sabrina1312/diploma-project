@@ -20,10 +20,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  perspective: 800px;
+  perspective: 400px;
 }
 
 .inner {
@@ -38,21 +38,21 @@
   left: 0%;
   top: 0%;
   animation: rotate-one 1s linear infinite;
-  border-bottom: 10px solid #000;
+  border-bottom: 10px solid #0000fe;
 }
 
 .inner.two {
   right: 0%;
   top: 0%;
   animation: rotate-two 1s linear infinite;
-  border-right: 10px solid #000;
+  border-right: 10px solid #0000fe;
 }
 
 .inner.three {
   right: 0%;
   bottom: 0%;
   animation: rotate-three 1s linear infinite;
-  border-top: 10px solid #000;
+  border-top: 10px solid #0000fe;
 }
 
 @keyframes rotate-one {
