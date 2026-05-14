@@ -118,6 +118,16 @@
 
 > _Официальный сайт — ваш надёжный партнёр в мире переводов._
 
+---
+
+**ссылка на репозиторий:** https://github.com/Sabrina1312/diploma-project
+
+---
+
+**ссылка на GitHubPages:** https://sabrina1312.github.io/diploma-project/
+
+---
+
 ## Автор проекта
 
 **Сабрина Шогунбекова**
