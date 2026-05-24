@@ -87,7 +87,7 @@ function resetAllStyles() {
 
   // Стили для нижнего основного текста
   mainTextDown.style.backgroundColor = "transparent";
-  mainTextDown.style.color = "#0000ca";
+  mainTextDown.style.color = "#171717";
 }
 
 // ============================================================

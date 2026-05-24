@@ -5,19 +5,19 @@
 .hero__wrapper {
   display: flex;
   flex-direction: column;
-  padding: 110px 0 70px 0;
+  padding: 110px 0 170px 0;
   position: relative;
 }
 
 @media screen and (max-width: 768px) {
   .hero__wrapper {
-    padding: 100px 0 70px 0;
+    padding: 100px 0 120px 0;
   }
 }
 
 @media screen and (max-width: 400px) {
   .hero__wrapper {
-    padding: 90px 0 70px 0;
+    padding: 90px 0 120px 0;
   }
 }
 
