@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./admin.css" />
+    <title>Админ-панель | Бюро переводов</title>
+  </head>
+  <body>
+    <!-- ЛОГИН -->
+    <div id="loginContainer" class="login-container">
+      <div class="login-box">
+        <h2>🔐 Вход в админ-панель</h2>
+        <input type="email" id="loginEmail" placeholder="Email" />
+        <input type="password" id="loginPassword" placeholder="Пароль" />
+        <button onclick="login()">Войти</button>
+        <div id="loginError" class="error-msg"></div>
+      </div>
+    </div>
+
+    <!-- АДМИН-ПАНЕЛЬ -->
+    <div id="adminPanel" class="admin-panel">
+      <div class="admin-header">
+        <h1>📊 <span>Админ-панель</span> | Бюро переводов</h1>
+        <button class="logout-btn" onclick="logout()">🚪 Выйти</button>
+      </div>
+
+      <div class="stats-grid" id="statsContainer">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-number" id="statOrders">0</div>
+          <div class="stat-label">Заказов</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✍️</div>
+          <div class="stat-number" id="statReviews">0</div>
+          <div class="stat-label">Отзывов</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-number" id="statPending">0</div>
+          <div class="stat-label">На модерации</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number" id="statApplications">0</div>
+          <div class="stat-label">Заявок</div>
+        </div>
+      </div>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button
+            class="tab-btn"
+            data-tab="orders"
+            onclick="switchTab('orders')"
+          >
+            📦 ЗАКАЗЫ
+          </button>
+          <button
+            class="tab-btn active"
+            data-tab="reviews"
+            onclick="switchTab('reviews')"
+          >
+            ✍️ ОТЗЫВЫ
+          </button>
+          <button
+            class="tab-btn"
+            data-tab="applications"
+            onclick="switchTab('applications')"
+          >
+            📋 ЗАЯВКИ
+          </button>
+        </div>
+      </div>
+
+      <div id="ordersTab" class="tab-content">
+        <div class="filters">
+          <button onclick="loadOrders()">🔄 Обновить</button>
+        </div>
+        <div class="table-wrapper" id="ordersTable">Загрузка...</div>
+      </div>
+
+      <div id="reviewsTab" class="tab-content active">
+        <div class="filters">
+          <select id="reviewFilter" onchange="loadReviews()">
+            <option value="all">Все статусы</option>
+            <option value="pending">На модерации</option>
+            <option value="approved">Одобренные</option>
+            <option value="rejected">Отклоненные</option>
+          </select>
+          <button onclick="loadReviews()">🔄 Обновить</button>
+        </div>
+        <div class="table-wrapper" id="reviewsTable">Загрузка...</div>
+      </div>
+
+      <div id="applicationsTab" class="tab-content">
+        <div class="filters">
+          <select id="appFilter" onchange="loadApplications()">
+            <option value="all">Все статусы</option>
+            <option value="new">Новые</option>
+            <option value="in_progress">В работе</option>
+            <option value="completed">Завершенные</option>
+          </select>
+          <button onclick="loadApplications()">🔄 Обновить</button>
+        </div>
+        <div class="table-wrapper" id="applicationsTable">Загрузка...</div>
+      </div>
+    </div>
+
+    <div id="viewModal" class="modal">
+      <div class="modal-content">
+        <h3>📄 Детальная информация</h3>
+        <div id="modalBody"></div>
+        <button class="modal-close" onclick="closeModal()">Закрыть</button>
+      </div>
+    </div>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>
